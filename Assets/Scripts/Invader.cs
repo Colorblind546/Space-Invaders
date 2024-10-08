@@ -8,7 +8,7 @@ public class Invader : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Sprite[] sprites = new Sprite[2];
 
-    // Time between frames and current frame
+    // Time between frames and current active frame
     public float timeBetweenFrames;
     int currentFrame;
 
@@ -31,7 +31,7 @@ public class Invader : MonoBehaviour
     }
 
     /// <summary>
-    /// Changes current sprite of the invader
+    /// Changes current sprite of the invader to the next sprite in the sprites array, or loops back to 0 if at the last sprite
     /// </summary>
     void ChangeSpriteFrame()
     {
@@ -39,9 +39,7 @@ public class Invader : MonoBehaviour
         {
             currentFrame = 0;
         }
-
         spriteRenderer.sprite = sprites[currentFrame];
-
         currentFrame++;
     }
 

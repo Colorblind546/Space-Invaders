@@ -12,6 +12,7 @@ public class Invaders : MonoBehaviour
     // Space between aliens 
     public float spaceX, spaceY;
 
+    // List of invader prefabs
     public List<GameObject> invaderPrefabs = new List<GameObject>();
 
 
@@ -33,19 +34,12 @@ public class Invaders : MonoBehaviour
     /// </summary>
     void SpawnInvaders()
     {
-
         for (int i = 0; i < rows; i++)
         {
-
             for (int j = 0; j < columns; j++)
             {
                 Instantiate(invaderPrefabs[i], transform.position + new Vector3(spaceX * j, -spaceY * i, 0), Quaternion.identity);
             }
-
-
-
         }
-
-
     }
 }
