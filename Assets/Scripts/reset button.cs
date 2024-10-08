@@ -20,7 +20,7 @@ public class resetbutton : MonoBehaviour
         }
     }
 
-    public void ReloadScene()
+    protected void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);   
     }
