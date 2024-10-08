@@ -11,6 +11,9 @@ public class PlayerShooting : MonoBehaviour
     // Last fired bullet to keep track of whether there is a bullet fired by the player that is still onscreen
     GameObject lastFiredBullet = null;
 
+    // Bullet speed, can be changed in inspector
+    [SerializeField] float bulletSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,8 @@ public class PlayerShooting : MonoBehaviour
         if (bullet != null)
         {
             lastFiredBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            //Projectile projectileScript = lastFiredBullet.GetComponent<Projectile>();
+            //projectileScript.speed = bulletSpeed;
         }
         else
         {
