@@ -41,8 +41,8 @@ public class PlayerShooting : MonoBehaviour
         if (bullet != null)
         {
             lastFiredBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-            Projectile projectileScript = lastFiredBullet.GetComponent<Projectile>();
-            projectileScript.speed = bulletSpeed;
+            //Projectile projectileScript = lastFiredBullet.GetComponent<Projectile>();
+            //projectileScript.speed = bulletSpeed;
         }
         else
         {

@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     Rigidbody2D rblaser;
 
-    public float speed = 0;
+    int speed = 0;
 
     // Start is called before the first frame update
     void Start()
