@@ -28,20 +28,10 @@ public class PlayerMovement : MonoBehaviour
             transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
         }
 
-        // Shoots if 'Space' is pressed
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Shoot();
-        }
-
-    }
-
-
-    /// <summary>
-    /// Shoots projectiles
-    /// </summary>
-    void Shoot()
-    {
         
+
     }
+
+
+    
 }
