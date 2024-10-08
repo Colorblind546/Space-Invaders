@@ -1066,7 +1066,6 @@ GameObject:
   - component: {fileID: 1894710737}
   - component: {fileID: 1894710733}
   - component: {fileID: 1894710732}
-  - component: {fileID: 1894710738}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1238,24 +1237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d08c1c67af8d3749802d1aef4625b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
   bullet: {fileID: 9104788330779230158, guid: 8e8ef86e1b791ca429bb97b28c734f18, type: 3}
   bulletSpeed: 0
-=======
-  bullet: {fileID: 0}
---- !u!114 &1894710738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894710731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40b2545007478c342ab2d28c299ceac9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
->>>>>>> Stashed changes
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
