@@ -8,6 +8,9 @@ public class Invader : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Sprite[] sprites = new Sprite[2];
 
+    // Player missile layer
+    [SerializeField] LayerMask missileLayer;
+
     // Time between frames and current active frame
     public float timeBetweenFrames;
     int currentFrame;
@@ -28,6 +31,15 @@ public class Invader : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "missile")
+        {
+            GotHit();
+            Destroy(collision.gameObject);
+        }
     }
 
     /// <summary>

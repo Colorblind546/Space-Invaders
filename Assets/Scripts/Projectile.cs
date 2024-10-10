@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-
+    // Classes all projectiles need
     protected Rigidbody2D rb2D;
     public float speed;
 
