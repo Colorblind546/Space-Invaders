@@ -15,9 +15,15 @@ public class Invader : MonoBehaviour
     public float timeBetweenFrames;
     int currentFrame;
 
+    // Camera object
+    GameObject cameraObj;
+    screenShake_01 screenShake;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        cameraObj = Camera.main.gameObject;
+        screenShake = cameraObj.GetComponent<screenShake_01>();
     }
 
 
@@ -62,6 +68,7 @@ public class Invader : MonoBehaviour
     /// </summary>
     void GotHit()
     {
+        screenShake.StartCoroutine(screenShake.Shaking());
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
