@@ -18,12 +18,12 @@ public class screenShake_01 : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
         if (start)
         {
             start = false;
             StartCoroutine(Shaking());
-        } 
+        }
     }
 
     IEnumerator Shaking()
