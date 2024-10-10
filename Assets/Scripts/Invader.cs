@@ -8,6 +8,9 @@ public class Invader : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Sprite[] sprites = new Sprite[2];
 
+    // Explosion effect
+    [SerializeField] GameObject explosionEffect;
+
     // Time between frames and current active frame
     public float timeBetweenFrames;
     int currentFrame;
@@ -30,6 +33,17 @@ public class Invader : MonoBehaviour
         
     }
 
+
+    // Calls GotHit when it collides with sometheing that has the tag "missile", also destroys the object it collided with
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "missile")
+        {
+            GotHit();
+            Destroy(collision.gameObject);
+        }
+    }
+
     /// <summary>
     /// Changes current sprite of the invader to the next sprite in the sprites array, or loops back to 0 if at the last sprite
     /// </summary>
@@ -44,10 +58,12 @@ public class Invader : MonoBehaviour
     }
 
     /// <summary>
-    /// Destroys itself
+    /// Destroys itself, and creates an explosion in its wake 
     /// </summary>
     void GotHit()
     {
+        Instantiate(explosionEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
+
 }

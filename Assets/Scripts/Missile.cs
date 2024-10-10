@@ -9,13 +9,13 @@ public class Missile : Projectile
     {
         rb2D = GetComponent<Rigidbody2D>();
 
-
+        MoveProjectile("up");
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveProjectile("up");
+        
 
 
     }
