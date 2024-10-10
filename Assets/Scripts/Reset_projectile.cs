@@ -16,7 +16,7 @@ public class Reset_projectile : MonoBehaviour
     {
         
     }
-
+    //När skottet kommer inanför empty objektet med boxcollidern så förstörs den med hjälp av OnCollionEnter.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(collision.gameObject);
