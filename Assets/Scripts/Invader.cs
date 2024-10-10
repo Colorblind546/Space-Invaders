@@ -33,6 +33,8 @@ public class Invader : MonoBehaviour
         
     }
 
+
+    // Calls GotHit when it collides with sometheing that has the tag "missile", also destroys the object it collided with
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "missile")
@@ -56,11 +58,12 @@ public class Invader : MonoBehaviour
     }
 
     /// <summary>
-    /// Destroys itself, and creates an explosion
+    /// Destroys itself, and creates an explosion in its wake 
     /// </summary>
     void GotHit()
     {
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
+
 }
