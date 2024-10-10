@@ -5,30 +5,33 @@ using UnityEngine.UIElements;
 
 public class screenShake_01 : MonoBehaviour
 {
-    
+    Vector3 startPosition;
     protected bool start = true;
     public AnimationCurve curve;
-    protected float duration = 1f;
+    protected float duration = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        startPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {   
         if (start)
+    {
+        
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            start = false;
             StartCoroutine(Shaking());
         }
+         
     }
 
-    IEnumerator Shaking()
+    public IEnumerator Shaking()
     {
-        Vector3 startPosition = transform.position;
+        
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)
@@ -36,11 +39,9 @@ public class screenShake_01 : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float strength = curve.Evaluate(elapsedTime / duration);
             transform.position = startPosition + Random.insideUnitSphere*strength;
-            Debug.Log("you are whiled and crazy");
             yield return null;
         }
         transform.position = startPosition;
-        Debug.Log("you got too the end, Good job");
     }
     
 }
