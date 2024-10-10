@@ -8,7 +8,7 @@ public class screenShake_01 : MonoBehaviour
     
     protected bool start = true;
     public AnimationCurve curve;
-    protected float duration = 100f;
+    protected float duration = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -37,11 +37,8 @@ public class screenShake_01 : MonoBehaviour
             float strength = curve.Evaluate(elapsedTime / duration);
             transform.position = startPosition + Random.insideUnitSphere*strength;
             Debug.Log("you are whiled and crazy");
+            yield return null;
         }
-
-
-        yield return null;
-
         transform.position = startPosition;
         Debug.Log("you got too the end, Good job");
     }
