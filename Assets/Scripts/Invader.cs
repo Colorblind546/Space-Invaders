@@ -8,8 +8,8 @@ public class Invader : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Sprite[] sprites = new Sprite[2];
 
-    // Player missile layer
-    [SerializeField] LayerMask missileLayer;
+    // Explosion effect
+    [SerializeField] GameObject explosionEffect;
 
     // Time between frames and current active frame
     public float timeBetweenFrames;
@@ -56,10 +56,11 @@ public class Invader : MonoBehaviour
     }
 
     /// <summary>
-    /// Destroys itself
+    /// Destroys itself, and creates an explosion
     /// </summary>
     void GotHit()
     {
+        Instantiate(explosionEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
