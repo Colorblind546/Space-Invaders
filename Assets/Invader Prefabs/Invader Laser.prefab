@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7772356686139556961}
   - component: {fileID: 9097409550420568314}
   - component: {fileID: 4172908708748715276}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Invader Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
