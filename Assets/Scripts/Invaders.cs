@@ -26,20 +26,27 @@ public class Invaders : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     /// <summary>
     /// Spawns invaders in a grid
     /// </summary>
+
+    public List<GameObject> Invaderss = new List<GameObject>();
+
     void SpawnInvaders()
     {
+
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < columns; j++)
             {
                 Instantiate(invaderPrefabs[i], transform.position + new Vector3(spaceX * j, -spaceY * i, 0), Quaternion.identity);
+                //Invaderss.Add();
             }
         }
     }
+
+   
 }
