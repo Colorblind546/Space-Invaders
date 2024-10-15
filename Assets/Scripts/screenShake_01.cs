@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,27 +20,30 @@ public class screenShake_01 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.P))
+        if (start)
         {
-            StartCoroutine(Shaking());
-        }
-         
-    }
 
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                StartCoroutine(Shaking());
+            }
+
+        }
+
+
+    }
     public IEnumerator Shaking()
     {
-        
+
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
             float strength = curve.Evaluate(elapsedTime / duration);
-            transform.position = startPosition + Random.insideUnitSphere*strength;
+            transform.position = startPosition + Random.insideUnitSphere * strength;
             yield return null;
         }
         transform.position = startPosition;
     }
-    
 }
