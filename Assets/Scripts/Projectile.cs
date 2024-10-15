@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     public float speed;
 
     /// <summary>
-    /// Tells projectile wheter to move it up or down, based on whether string reads "up" or "down"
+    /// Tells projectile wheter to move it up or down, based on whether string reads "up" or "down", and sets velocity to that
     /// </summary>
     /// <param name="direction"></param>
     protected void MoveProjectile(string direction)

@@ -274,7 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 413740584}
   - component: {fileID: 413740583}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bottom Barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1343,7 +1343,7 @@ GameObject:
   - component: {fileID: 1894710733}
   - component: {fileID: 1894710732}
   - component: {fileID: 1894710738}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
