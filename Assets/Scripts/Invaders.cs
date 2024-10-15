@@ -42,8 +42,8 @@ public class Invaders : MonoBehaviour
         {
             for (int j = 0; j < columns; j++)
             {
-                Instantiate(invaderPrefabs[i], transform.position + new Vector3(spaceX * j, -spaceY * i, 0), Quaternion.identity);
-                //Invaderss.Add();
+               GameObject invaderobject = (GameObject)Instantiate(invaderPrefabs[i], transform.position + new Vector3(spaceX * j, -spaceY * i, 0), Quaternion.identity);
+                Invaderss.Add(invaderobject);
             }
         }
     }
