@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,8 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static Invaders invaders;
 
-  
-    
+    Vector2 position;
+
 
     private static GameManager _instance;
 
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        position = transform.position;
 
 
 
@@ -54,20 +55,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       foreach (GameObject ob in invaders.Invaderss)
+        {
+            ob.transform.position = new Vector2(-2, 0);
+        }
     }
 
     private void FixedUpdate()
     {
 
-        Vector2 position = transform.position;
-
-        for (int i = 0; i < 30; i++)
-        {
-            if (i < 10)
-            {
-                invaders.Invaderss = position + new Vector2(-2, 0);
-        }
-        }
     }
 }
