@@ -5,19 +5,26 @@ using TMPro;
 public class ScoreBoard_01 : MonoBehaviour
 {
 
-    public int score;
-    public TextMeshProUGUI scoreText;
+    public int score = 0;
+    TMP_Text scoreText;
     // Start is called before the first frame update
     void Start()
     {
-       scoreText = GetComponent<TextMeshProUGUI>();
-        scoreText.text = "Score: " + score;
+        scoreText = GetComponent<TMP_Text>();
+        if (scoreText != null)
+        {
+            scoreText.text = "Score: " + score;
+        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Score: " + score;
+        if (scoreText != null)
+        {
+            scoreText.text = "Score: " + score;
+        }
     }
 
     public void UpdateScorce (int points)
