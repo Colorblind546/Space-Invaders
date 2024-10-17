@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public Invaders invaders;
 
-    Vector2 position;
+    Vector3 direction = Vector3.right;
+    Vector3 position;
 
 
     private static GameManager _instance;
@@ -55,14 +56,33 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       foreach (GameObject ob in invaders.Invaderss)
+
+        float speed = 1f;
+        transform.position += speed * Time.deltaTime * direction;
+
+        Vector3 rightwall = Camera.main.ViewportToWorldPoint(Vector3.right);
+        Vector3 leftwall = Camera.main.ViewportToWorldPoint(Vector3.zero);
+
+       
+        foreach (GameObject ob in invaders.Invaderss)
         {
-            ob.transform.position = new Vector2(-2, 0);
+            
+            
+            if(direction == Vector3.right &&  ob.transform.position.x >= rightwall.x -1f )
+            {
+                Advance();
+                break;
+            }
+
+           
         }
     }
 
-    private void FixedUpdate()
+    public void Advance()
     {
-
+        direction = new Vector3(-direction.x, 0, 0);
+        Vector3 position = transform.position;
+        position.y -= 1f;
+        transform.position = position;
     }
 }
