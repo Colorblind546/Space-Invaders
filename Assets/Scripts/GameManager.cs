@@ -69,6 +69,10 @@ public class GameManager : MonoBehaviour
             Vector3 rightwall = Camera.main.ViewportToWorldPoint(Vector3.right);
             Vector3 leftwall = Camera.main.ViewportToWorldPoint(Vector3.zero);
 
+            if(!ob.gameObject.activeInHierarchy)
+            {
+                continue;
+            }
 
             if (direction == Vector3.right &&  ob.transform.position.x >= rightwall.x -1f )
             {
