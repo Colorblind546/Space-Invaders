@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         {
 
             float speed = 1f;
-            transform.position += speed * Time.deltaTime * direction;
+            ob.transform.position += speed * Time.deltaTime * direction;
 
             Vector3 rightwall = Camera.main.ViewportToWorldPoint(Vector3.right);
             Vector3 leftwall = Camera.main.ViewportToWorldPoint(Vector3.zero);
