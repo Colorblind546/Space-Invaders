@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +54,11 @@ public class GameManager : MonoBehaviour
         
     }
 
+    void Raycastcheck()
+    {
+
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -60,8 +66,18 @@ public class GameManager : MonoBehaviour
        
 
 
-        foreach (GameObject ob in invaders.Invaderss)
+        foreach (GameObject ob in invaders.Invaderss) // Bestämmer vad varje invader gameobject ska göra 
         {
+            // skuter en laser rakt ner som kollar om något är i vägen
+
+            RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position, -Vector2.up,20f); 
+            
+            if(hitcheck.collider != null)
+            {
+                Console.Write("Hit detected");
+            }
+
+            // Invaders åker från sida till sida
 
             float speed = 1f;
             ob.transform.position += speed * Time.deltaTime * direction;
@@ -89,7 +105,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Advance()
+    public void Advance() // Invaders byter håll när de kommer nära väggen 
     {
         direction = new Vector3(-direction.x, 0, 0);
         Vector3 position = transform.position;
