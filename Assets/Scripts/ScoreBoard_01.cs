@@ -11,7 +11,7 @@ public class ScoreBoard_01 : MonoBehaviour
     void Start()
     {
        scoreText = GetComponent<TextMeshProUGUI>();
-        scoreText.text = "Score: " + score;
+       scoreText.text = "Score: " + score;
     }
 
     // Update is called once per frame
