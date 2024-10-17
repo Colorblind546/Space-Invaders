@@ -57,18 +57,25 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        float speed = 1f;
-        transform.position += speed * Time.deltaTime * direction;
-
-        Vector3 rightwall = Camera.main.ViewportToWorldPoint(Vector3.right);
-        Vector3 leftwall = Camera.main.ViewportToWorldPoint(Vector3.zero);
-
        
+
+
         foreach (GameObject ob in invaders.Invaderss)
         {
-            
-            
-            if(direction == Vector3.right &&  ob.transform.position.x >= rightwall.x -1f )
+
+            float speed = 1f;
+            transform.position += speed * Time.deltaTime * direction;
+
+            Vector3 rightwall = Camera.main.ViewportToWorldPoint(Vector3.right);
+            Vector3 leftwall = Camera.main.ViewportToWorldPoint(Vector3.zero);
+
+
+            if (direction == Vector3.right &&  ob.transform.position.x >= rightwall.x -1f )
+            {
+                Advance();
+                break;
+            } 
+            else if (direction == Vector3.left && ob.transform.position.x <= leftwall.x +1f)
             {
                 Advance();
                 break;
