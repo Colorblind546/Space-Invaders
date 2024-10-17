@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static Invaders invaders;
+    public Invaders invaders;
 
     Vector2 position;
 
