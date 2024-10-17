@@ -67,7 +67,8 @@ public class Invader : MonoBehaviour
     {
         screenShake.StartCoroutine(screenShake.Shaking());
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+
 
     }
 

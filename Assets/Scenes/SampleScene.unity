@@ -1596,6 +1596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99569bc7769c175429239c2ad2409f00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invaders: {fileID: 350839879}
 --- !u!4 &2039186662
 Transform:
   m_ObjectHideFlags: 0
