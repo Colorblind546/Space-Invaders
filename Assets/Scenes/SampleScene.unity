@@ -1294,6 +1294,7 @@ GameObject:
   - component: {fileID: 1391166450}
   - component: {fileID: 1391166449}
   - component: {fileID: 1391166448}
+  - component: {fileID: 1391166452}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1784,6 +1785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invaders: {fileID: 350839879}
+  enemylaser: {fileID: 1221257828946106467, guid: d15d7557d3fab60429d7b57da618d6d6, type: 3}
 --- !u!4 &2039186662
 Transform:
   m_ObjectHideFlags: 0
