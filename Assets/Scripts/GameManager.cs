@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     private static GameManager _instance;
 
-    // Om GameManager inte finns så skriver den ett error i logs 
+    // Om GameManager inte finns sï¿½ skriver den ett error i logs 
     public static GameManager Instance
     {
         get
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    // Kollar om GameManager redan finns när spelet startar, om det gör det så förstörs det. Arnas så gör det så att den inte förstörs när den laddar. 
+    // Kollar om GameManager redan finns nï¿½r spelet startar, om det gï¿½r det sï¿½ fï¿½rstï¿½rs det. Arnas sï¿½ gï¿½r det sï¿½ att den inte fï¿½rstï¿½rs nï¿½r den laddar. 
 
     private void Awake()
     {
@@ -66,9 +66,9 @@ public class GameManager : MonoBehaviour
        
 
 
-        foreach (GameObject ob in invaders.Invaderss) // Bestämmer vad varje invader gameobject ska göra 
+        foreach (GameObject ob in invaders.Invaderss) // Bestï¿½mmer vad varje invader gameobject ska gï¿½ra 
         {
-            // skuter en laser rakt ner som kollar om något är i vägen
+            // skuter en laser rakt ner som kollar om nï¿½got ï¿½r i vï¿½gen
 
             RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position, -Vector2.up,20f); 
             
@@ -77,18 +77,13 @@ public class GameManager : MonoBehaviour
                 Console.Write("Hit detected");
             }
 
-            // Invaders åker från sida till sida
+            // Invaders ï¿½ker frï¿½n sida till sida
 
             float speed = 1f;
             ob.transform.position += speed * Time.deltaTime * direction;
 
             Vector3 rightwall = Camera.main.ViewportToWorldPoint(Vector3.right);
             Vector3 leftwall = Camera.main.ViewportToWorldPoint(Vector3.zero);
-
-            if(!ob.gameObject.activeInHierarchy)
-            {
-                continue;
-            }
 
             if (direction == Vector3.right &&  ob.transform.position.x >= rightwall.x -1f )
             {
@@ -105,7 +100,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Advance() // Invaders byter håll när de kommer nära väggen 
+    public void Advance() // Invaders byter hï¿½ll nï¿½r de kommer nï¿½ra vï¿½ggen 
     {
         direction = new Vector3(-direction.x, 0, 0);
         Vector3 position = transform.position;
