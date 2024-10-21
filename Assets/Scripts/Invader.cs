@@ -44,7 +44,7 @@ public class Invader : MonoBehaviour
     // Calls GotHit when it collides with sometheing that has the tag "missile", also destroys the object it collided with
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GotHit();
+        //GotHit();
         Destroy(collision.gameObject);
     }
 
