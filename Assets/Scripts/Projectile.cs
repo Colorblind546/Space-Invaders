@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Projectile : MonoBehaviour
 {
@@ -21,6 +22,21 @@ public class Projectile : MonoBehaviour
         else if (direction == "down")
         {
             rb2D.velocity = Vector3.down * speed;
+        }
+    }
+
+    /// <summary>
+    /// Makes projectiles fly towards a position in space, to be used in FixedUpdate
+    /// </summary>
+    /// <param name="targetPos"></param>
+    protected void FlyTowards(Vector3 targetPos)
+    {
+        Vector3 direction = targetPos - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+        if (rb2D != null)
+        {
+            rb2D.AddForce(transform.up * speed);
         }
     }
 
