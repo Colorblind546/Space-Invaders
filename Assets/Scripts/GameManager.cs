@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     Vector3 direction = Vector3.right;
     Vector3 position;
 
+    [SerializeField] GameObject enemylaser;
 
     private static GameManager _instance;
 
@@ -70,11 +71,12 @@ public class GameManager : MonoBehaviour
         {
             // skuter en laser rakt ner som kollar om något är i vägen
 
-            RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position, -Vector2.up,20f); 
+            RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position - Vector3.up, -Vector2.up, 20f);
+            print(hitcheck.collider != null);
             
             if(hitcheck.collider != null)
             {
-                Console.Write("Hit detected");
+                Instantiate(enemylaser, ob.transform.position, Quaternion.identity);
             }
 
             // Invaders åker från sida till sida
