@@ -38,6 +38,11 @@ public class MenuButtonEvents : MonoBehaviour
         StartCoroutine(MoveFromCredits());
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     IEnumerator MoveToCredits()
     {
         while (Camera.main.gameObject.transform.position.y > -30)

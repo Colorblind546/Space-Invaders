@@ -19,8 +19,6 @@ public class Invader : MonoBehaviour
     GameObject cameraObj;
     screenShake_01 screenShake;
 
-    // Explosion Audio source
-    public AudioSource explosionSound;
 
     private void Awake()
     {
@@ -33,7 +31,6 @@ public class Invader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        explosionSound = GetComponent<AudioSource>();
         InvokeRepeating(nameof(ChangeSpriteFrame), 0f, timeBetweenFrames);
     }
 
@@ -71,10 +68,7 @@ public class Invader : MonoBehaviour
     {
         screenShake.StartCoroutine(screenShake.Shaking());
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
-        explosionSound.Play();
         gameObject.SetActive(false);
-
-
     }
 
 
