@@ -15,6 +15,9 @@ public class Invaders : MonoBehaviour
     // List of invader prefabs
     public List<GameObject> invaderPrefabs = new List<GameObject>();
 
+    // Scoreboard Object
+    [SerializeField] GameObject scoreBoardObj;
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +46,8 @@ public class Invaders : MonoBehaviour
             for (int j = 0; j < columns; j++)
             {
                GameObject invaderobject = (GameObject)Instantiate(invaderPrefabs[i], transform.position + new Vector3(spaceX * j, -spaceY * i, 0), Quaternion.identity);
+                Invader invaderScript = invaderobject.GetComponent<Invader>();
+                invaderScript.scoreCounter = scoreBoardObj;
                 Invaderss.Add(invaderobject);
             }
         }

@@ -19,6 +19,12 @@ public class Invader : MonoBehaviour
     GameObject cameraObj;
     screenShake_01 screenShake;
 
+    // ScoreCounter GameObject and script
+    public GameObject scoreCounter;
+    ScoreBoard_01 scoreBoard;
+
+    // Score yielded
+    [SerializeField] int score;
 
     private void Awake()
     {
@@ -44,7 +50,7 @@ public class Invader : MonoBehaviour
     // Calls GotHit when it collides with sometheing that has the tag "missile", also destroys the object it collided with
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //GotHit();
+        GotHit();
         Destroy(collision.gameObject);
     }
 
@@ -68,6 +74,20 @@ public class Invader : MonoBehaviour
     {
         screenShake.StartCoroutine(screenShake.Shaking());
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        if (scoreCounter != null)
+        {
+            print("board exists");
+            scoreBoard = scoreCounter.GetComponent<ScoreBoard_01>();
+            if (scoreBoard != null)
+            {
+                print("board is script and adding points");
+                scoreBoard.UpdateScorce(score);
+            }
+        }
+        else
+        {
+            print("scoreboard is null");
+        }
         gameObject.SetActive(false);
     }
 

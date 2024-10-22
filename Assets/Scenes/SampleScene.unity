@@ -293,6 +293,7 @@ MonoBehaviour:
   - {fileID: 5831885657503439099, guid: 3bd02b345870350438d511f5029ce497, type: 3}
   - {fileID: 2914922081198490197, guid: 201d3384f5016764d98fd324e630dbd1, type: 3}
   - {fileID: 8318360816055880613, guid: e7a5f01b3cd3c6c4b9c22d58e03cd2eb, type: 3}
+  scoreBoardObj: {fileID: 990511017}
   Invaderss: []
 --- !u!4 &350839880
 Transform:
@@ -1726,6 +1727,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invaders: {fileID: 350839879}
+  invaderLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  enemylaser: {fileID: 1221257828946106467, guid: d15d7557d3fab60429d7b57da618d6d6, type: 3}
 --- !u!4 &2039186662
 Transform:
   m_ObjectHideFlags: 0

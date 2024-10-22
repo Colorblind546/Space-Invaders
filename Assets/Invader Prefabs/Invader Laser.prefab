@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2153418699788571130}
   - component: {fileID: 7772356686139556961}
+  - component: {fileID: -8215677795282781047}
   - component: {fileID: 9097409550420568314}
   - component: {fileID: 4172908708748715276}
-  - component: {fileID: -8215677795282781047}
   m_Layer: 6
   m_Name: Invader Laser
   m_TagString: Untagged
@@ -87,6 +87,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-8215677795282781047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221257828946106467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fdee35d2b1615c48b8abed36265407a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!50 &9097409550420568314
 Rigidbody2D:
   serializedVersion: 4
@@ -159,16 +172,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.125, y: 0.375}
   m_EdgeRadius: 0
---- !u!114 &-8215677795282781047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221257828946106467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fdee35d2b1615c48b8abed36265407a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0

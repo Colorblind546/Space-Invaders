@@ -29,6 +29,7 @@ public class ScoreBoard_01 : MonoBehaviour
 
     public void UpdateScorce (int points)
     {
+        print("recieved points: " + points);
         score += points;
         scoreText.text = "Score: " + score;
     }

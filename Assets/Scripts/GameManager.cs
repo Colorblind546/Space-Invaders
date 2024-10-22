@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
 {
     public Invaders invaders;
 
+    // Invader LayerMask
+    [SerializeField] LayerMask invaderLayer;
+
     Vector3 direction = Vector3.right;
     Vector3 position;
 
@@ -71,12 +74,12 @@ public class GameManager : MonoBehaviour
         {
             // skjuter en laser rakt ner som kollar om n�got �r i v�gen
 
-            RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position - Vector3.up, -Vector2.up, 20f);
-            print(hitcheck.collider != null);
+            RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position - Vector3.up, -Vector2.up, 20f, invaderLayer);
             
-            if(hitcheck.collider != null)
+            
+            if(hitcheck.collider == null)
             {
-                Instantiate(enemylaser, ob.transform.position, Quaternion.identity);
+                //Instantiate(enemylaser, ob.transform.position, Quaternion.identity);
             }
 
             // Invaders �ker fr�n sida till sida

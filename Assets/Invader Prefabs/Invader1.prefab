@@ -177,7 +177,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: dd343abb0bda1be4aa13cf866edb153e, type: 3}
   explosionEffect: {fileID: 7519137061595987311, guid: ebbae6ee66f32dc47a47b545bd31da27, type: 3}
   timeBetweenFrames: 0.5
-  explosionSound: {fileID: -3857052433065161212}
+  scoreCounter: {fileID: 0}
+  score: 100
 --- !u!82 &-3857052433065161212
 AudioSource:
   m_ObjectHideFlags: 0
