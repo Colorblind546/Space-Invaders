@@ -106,18 +106,17 @@ public class PlayerShooting : MonoBehaviour
             print(collider.name);
         }
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < Mathf.Clamp(3, 0, invaderColliders.Length); i++)
         {
-            if (i <= invaderColliders.Length)
+           
+            if (invaderColliders[i] != null)
             {
-                if (invaderColliders[i] != null)
-                {
-                    GameObject firedMissile = Instantiate(missile, transform.position, Quaternion.identity);
-                    HomingMissile homingMissile = firedMissile.GetComponent<HomingMissile>();
-                    homingMissile.SetTarget(invaderColliders[i].gameObject);
-                    yield return new WaitForSeconds(0.2f);
-                }
+                GameObject firedMissile = Instantiate(missile, transform.position, Quaternion.identity);
+                HomingMissile homingMissile = firedMissile.GetComponent<HomingMissile>();
+                homingMissile.SetTarget(invaderColliders[i].gameObject);
+                yield return new WaitForSeconds(0.1f);
             }
+            
         }
     }
 

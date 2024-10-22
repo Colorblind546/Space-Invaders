@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     {
         position = transform.position;
 
-
+        
 
         if (_instance)
 
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        direction = Vector3.right;
     }
 
     void Raycastcheck()
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject ob in invaders.Invaderss) // Best�mmer vad varje invader gameobject ska g�ra 
         {
-            // skuter en laser rakt ner som kollar om n�got �r i v�gen
+            // skjuter en laser rakt ner som kollar om n�got �r i v�gen
 
             RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position, -Vector2.up,20f); 
             

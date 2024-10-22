@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
         }
-
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -14.1875f, 14.1875f), transform.position.y, 0);
         
 
     }
