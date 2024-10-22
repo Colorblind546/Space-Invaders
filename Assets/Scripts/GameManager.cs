@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     // Current GameManager instance
     private static GameManager _instance;
 
+    //cooldown for invaders shooting
+    bool cooldown;
+
     // Om GameManager inte finns s� skriver den ett error i logs 
     public static GameManager Instance
     {
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        cooldown = false;
         position = transform.position; // This is never used, should we remove it?
 
         
@@ -79,12 +83,17 @@ public class GameManager : MonoBehaviour
         {
             // skjuter en laser rakt ner som kollar om n�got �r i v�gen
 
-            RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position - Vector3.up, -Vector2.up, 20f, invaderLayer);
+            RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position - Vector3.up, -Vector2.up, 10f, invaderLayer);
             
             
-            if(hitcheck.collider == null)
+            if(hitcheck.collider == null && !cooldown)
             {
-                //Instantiate(invaderLaser, ob.transform.position, Quaternion.identity);
+              
+                    Instantiate(invaderLaser, ob.transform.position, Quaternion.identity);
+                    Invoke("resetcooldown", 1f);
+                    cooldown = true;
+       
+                
             }
 
             // Invaders �ker fr�n sida till sida
@@ -112,6 +121,13 @@ public class GameManager : MonoBehaviour
 
            
         }
+
+       
+    }
+
+    void resetcooldown()
+    {
+        cooldown = false;
     }
 
     /// <summary>
@@ -126,6 +142,6 @@ public class GameManager : MonoBehaviour
             position.y -= 1f;
             invaderObj.transform.position = position;
         }
-        
+   
     }
 }
