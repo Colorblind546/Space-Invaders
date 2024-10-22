@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     // Invader move direction, and position
     Vector3 direction = Vector3.right;
-    Vector3 position;
+    Vector3 position; // Never used
 
     // Invader laser Object
     [SerializeField] GameObject invaderLaser;
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        position = transform.position;
+        position = transform.position; // This is never used, should we remove it?
 
         
         // Gör inte det här så att den säger att den ska förstöras, och sen stoppar sig från att förstöras, som leder till att inget händer? - Morgan
@@ -92,11 +92,15 @@ public class GameManager : MonoBehaviour
             float speed = 1f;
             ob.transform.position += speed * Time.deltaTime * direction;
 
-            Vector3 rightwall = Camera.main.ViewportToWorldPoint(Vector3.right);
-            Vector3 leftwall = Camera.main.ViewportToWorldPoint(Vector3.zero);
+            Vector3 rightwall = new Vector3(15, -15, -10);
+            //Camera.main.ViewportToWorldPoint(Vector3.right);
 
-            if (direction == Vector3.right &&  ob.transform.position.x >= rightwall.x -1f )
+            Vector3 leftwall = new Vector3(-15, -15, -10);
+            //Camera.main.ViewportToWorldPoint(Vector3.zero);
+
+            if (direction == Vector3.right && ob.transform.position.x >= rightwall.x -1f )
             {
+                print(rightwall + ", and " + leftwall);
                 Advance();
                 break;
             } 
@@ -115,9 +119,13 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void Advance() // Invaders byter h�ll n�r de kommer n�ra v�ggen 
     {
-        direction = new Vector3(-direction.x, 0, 0);
-        Vector3 position = transform.position;
-        position.y -= 1f;
-        transform.position = position;
+        foreach (GameObject invaderObj in invaders.Invaderss)
+        {
+            direction = new Vector3(-direction.x, 0, 0);
+            Vector3 position = invaderObj.transform.position;
+            position.y -= 1f;
+            invaderObj.transform.position = position;
+        }
+        
     }
 }

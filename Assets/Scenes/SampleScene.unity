@@ -1730,7 +1730,7 @@ MonoBehaviour:
   invaderLayer:
     serializedVersion: 2
     m_Bits: 256
-  enemylaser: {fileID: 1221257828946106467, guid: d15d7557d3fab60429d7b57da618d6d6, type: 3}
+  invaderLaser: {fileID: 0}
 --- !u!4 &2039186662
 Transform:
   m_ObjectHideFlags: 0
