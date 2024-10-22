@@ -207,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 94620996}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 15.39, z: 0}
+  m_LocalPosition: {x: 0, y: 16.61, z: 0}
   m_LocalScale: {x: 32.725, y: 3.5604, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -832,6 +832,67 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.625, y: 2}
   m_EdgeRadius: 0
+--- !u!1001 &567395692
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 897011575928426068, guid: 939d03dfecc71b140b219c435423ac18, type: 3}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232115603399576285, guid: 939d03dfecc71b140b219c435423ac18, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.0977597
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232115603399576285, guid: 939d03dfecc71b140b219c435423ac18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.5919
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232115603399576285, guid: 939d03dfecc71b140b219c435423ac18, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232115603399576285, guid: 939d03dfecc71b140b219c435423ac18, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232115603399576285, guid: 939d03dfecc71b140b219c435423ac18, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232115603399576285, guid: 939d03dfecc71b140b219c435423ac18, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232115603399576285, guid: 939d03dfecc71b140b219c435423ac18, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232115603399576285, guid: 939d03dfecc71b140b219c435423ac18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232115603399576285, guid: 939d03dfecc71b140b219c435423ac18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232115603399576285, guid: 939d03dfecc71b140b219c435423ac18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701690270364088732, guid: 939d03dfecc71b140b219c435423ac18, type: 3}
+      propertyPath: m_Name
+      value: MysteryInvader
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 939d03dfecc71b140b219c435423ac18, type: 3}
 --- !u!1 &609531374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1763,3 +1824,4 @@ SceneRoots:
   - {fileID: 990511018}
   - {fileID: 926778717}
   - {fileID: 305878356}
+  - {fileID: 567395692}
