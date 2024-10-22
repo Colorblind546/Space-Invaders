@@ -13,7 +13,7 @@ public class SettingManager : MonoBehaviour
         }
         if (!PlayerPrefs.HasKey("MissileCooldown"))
         {
-            PlayerPrefs.SetFloat("MissileCooldown", 15);
+            PlayerPrefs.SetFloat("MissileCooldown", 20);
         }
     }
 
