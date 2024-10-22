@@ -32,12 +32,12 @@ public class Invaders : MonoBehaviour
 
     }
 
+    
+
+    public List<GameObject> Invaderss = new List<GameObject>();
     /// <summary>
     /// Spawns invaders in a grid
     /// </summary>
-
-    public List<GameObject> Invaderss = new List<GameObject>();
-
     void SpawnInvaders()
     {
 

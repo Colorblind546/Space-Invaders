@@ -27,6 +27,10 @@ public class ScoreBoard_01 : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Changes score and applies it to score text
+    /// </summary>
+    /// <param name="points"></param>
     public void UpdateScorce (int points)
     {
         print("recieved points: " + points);

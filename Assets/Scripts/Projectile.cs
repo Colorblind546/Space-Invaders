@@ -5,7 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Projectile : MonoBehaviour
 {
-    // Classes all projectiles need
+    // Variables all projectiles need
     protected Rigidbody2D rb2D;
     public float speed;
 

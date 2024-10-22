@@ -40,6 +40,9 @@ public class HomingMissile : Projectile
         targetObject = target;
     }
 
+    /// <summary>
+    /// Destroys self immediately, made so it can be called through Invoke()
+    /// </summary>
     void DestroySelf()
     {
         Destroy(gameObject);

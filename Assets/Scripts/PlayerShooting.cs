@@ -45,11 +45,13 @@ public class PlayerShooting : MonoBehaviour
             Shoot();
         }
 
+        // When cooldown isn't finished, player cannot fire missiles
         if (cooldownTimeElapsed >= missileCooldown)
         {
             MissileHold();
         }
 
+        // Counts down cooldown for missiles
         if (cooldownTimeElapsed < missileCooldown)
         {
             cooldownTimeElapsed += Time.deltaTime;
@@ -59,7 +61,7 @@ public class PlayerShooting : MonoBehaviour
 
 
     /// <summary>
-    /// Shoots a projectile when called
+    /// Shoots a bullet when called
     /// </summary>
     void Shoot()
     {
@@ -76,7 +78,7 @@ public class PlayerShooting : MonoBehaviour
     }
 
     /// <summary>
-    /// If called, player must hold key to fire missiles
+    /// If called, player can hold key to fire missiles
     /// </summary>
     void MissileHold()
     {

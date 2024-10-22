@@ -19,6 +19,22 @@ public class MenuButtonEvents : MonoBehaviour
         
     }
 
+
+
+
+
+
+
+
+    /*
+     * #############################################################################################################################################################################################################
+     * Any Methods beyond this point should only be used for events when player presses on menu buttons ############################################################################################################
+     * #############################################################################################################################################################################################################
+     */
+
+    /// <summary>
+    /// Starts Game
+    /// </summary>
     public void StartGame()
     {
         print("Start");
@@ -26,35 +42,54 @@ public class MenuButtonEvents : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Calls MoveToCredits
+    /// </summary>
     public void OpenCredits()
     {
         print("Opening credits");
         StartCoroutine(MoveToCredits());
     }
 
+    /// <summary>
+    /// Calls MoveFromCredits
+    /// </summary>
     public void ReturnFromCredits()
     {
         print("Returning from credits");
         StartCoroutine(MoveFromCredits());
     }
 
+    /// <summary>
+    /// Calls MoveToSettings
+    /// </summary>
     public void OpenSettings()
     {
         print("Opening settings");
         StartCoroutine(MoveToSettings());
     }
 
+    /// <summary>
+    /// Calls MoveFromSettings
+    /// </summary>
     public void ReturnFromSettings()
     {
         print("Returning from settings");
         StartCoroutine(MoveFromSettings());
     }
 
+    /// <summary>
+    /// Exits application (only works in builds)
+    /// </summary>
     public void QuitGame()
     {
         Application.Quit();
     }
 
+    /// <summary>
+    /// Moves to settings
+    /// </summary>
+    /// <returns></returns>
     IEnumerator MoveToSettings()
     {
         while (Camera.main.gameObject.transform.position.y < 30)
@@ -65,6 +100,10 @@ public class MenuButtonEvents : MonoBehaviour
         Camera.main.gameObject.transform.position = new Vector3(0, 30, -10);
     }
 
+    /// <summary>
+    /// Moves from settings
+    /// </summary>
+    /// <returns></returns>
     IEnumerator MoveFromSettings()
     {
         while (Camera.main.gameObject.transform.position.y > 0)
@@ -75,6 +114,10 @@ public class MenuButtonEvents : MonoBehaviour
         Camera.main.gameObject.transform.position = new Vector3(0, 0, -10);
     }
 
+    /// <summary>
+    /// Moves to credits
+    /// </summary>
+    /// <returns></returns>
     IEnumerator MoveToCredits()
     {
         while (Camera.main.gameObject.transform.position.y > -30)
@@ -84,7 +127,11 @@ public class MenuButtonEvents : MonoBehaviour
         }
         Camera.main.gameObject.transform.position = new Vector3(0, -30, -10);
     }
-
+    
+    /// <summary>
+    /// Moves from credits
+    /// </summary>
+    /// <returns></returns>
     IEnumerator MoveFromCredits()
     {
         while (Camera.main.gameObject.transform.position.y < 0)

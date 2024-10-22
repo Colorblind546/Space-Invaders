@@ -7,16 +7,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // Invaders.cs script, not to be confused with invader.cs
     public Invaders invaders;
 
     // Invader LayerMask
     [SerializeField] LayerMask invaderLayer;
 
+    // Invader move direction, and position
     Vector3 direction = Vector3.right;
     Vector3 position;
 
-    [SerializeField] GameObject enemylaser;
+    // Invader laser Object
+    [SerializeField] GameObject invaderLaser;
 
+    // Current GameManager instance
     private static GameManager _instance;
 
     // Om GameManager inte finns s� skriver den ett error i logs 
@@ -34,14 +38,14 @@ public class GameManager : MonoBehaviour
     }
 
 
-    // Kollar om GameManager redan finns n�r spelet startar, om det g�r det s� f�rst�rs det. Arnas s� g�r det s� att den inte f�rst�rs n�r den laddar. 
+    // Kollar om GameManager redan finns n�r spelet startar, om det g�r det s� f�rst�rs det. Annars s� g�r det s� att den inte f�rst�rs n�r den laddar. 
 
     private void Awake()
     {
         position = transform.position;
 
         
-
+        // Gör inte det här så att den säger att den ska förstöras, och sen stoppar sig från att förstöras, som leder till att inget händer? - Morgan
         if (_instance)
 
             Destroy(gameObject);
@@ -54,7 +58,8 @@ public class GameManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
+        // Sets direction to right 
         direction = Vector3.right;
     }
 
@@ -79,7 +84,7 @@ public class GameManager : MonoBehaviour
             
             if(hitcheck.collider == null)
             {
-                //Instantiate(enemylaser, ob.transform.position, Quaternion.identity);
+                //Instantiate(invaderLaser, ob.transform.position, Quaternion.identity);
             }
 
             // Invaders �ker fr�n sida till sida
@@ -105,6 +110,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Moves invaders down a step, apppoaching the player
+    /// </summary>
     public void Advance() // Invaders byter h�ll n�r de kommer n�ra v�ggen 
     {
         direction = new Vector3(-direction.x, 0, 0);

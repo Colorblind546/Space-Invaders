@@ -6,32 +6,43 @@ using UnityEngine.UIElements;
 
 public class screenShake_01 : MonoBehaviour
 {
+    // Start position for the camera, to reset without any issues of camera getting startposition changed
     Vector3 startPosition;
+
+    // Not used anymore, a relic of the past
     protected bool start = true;
+
+    // A curve to set how the screenshake is throughout the duration of the screenshake
     public AnimationCurve curve;
+
+    // How long the screenshake lasts
     protected float duration = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Sets start position for camera, so it always returns to the same place
         startPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (start)
+
+        if (Input.GetKeyDown(KeyCode.P))
         {
-
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                StartCoroutine(Shaking());
-            }
-
+            StartCoroutine(Shaking());
         }
+
+        
 
 
     }
+
+    /// <summary>
+    /// Shakes screen when called
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator Shaking()
     {
 
