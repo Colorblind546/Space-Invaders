@@ -74,44 +74,51 @@ public class GameManager : MonoBehaviour
 
        
 
-
-        foreach (GameObject ob in invaders.Invaderss) // Best�mmer vad varje invader gameobject ska g�ra 
+        if (invaders.Invaderss.Count > 0)
         {
-            // skjuter en laser rakt ner som kollar om n�got �r i v�gen
-
-            RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position - Vector3.up, -Vector2.up, 20f, invaderLayer);
-            
-            
-            if(hitcheck.collider == null)
+            foreach (GameObject ob in invaders.Invaderss) // Best�mmer vad varje invader gameobject ska g�ra 
             {
-                //Instantiate(invaderLaser, ob.transform.position, Quaternion.identity);
+                // skjuter en laser rakt ner som kollar om n�got �r i v�gen
+                if (ob == null)
+                {
+                    print("ob is null");
+                    continue;
+                }
+                RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position - Vector3.up, -Vector2.up, 20f, invaderLayer);
+
+
+                if (hitcheck.collider == null)
+                {
+                    //Instantiate(invaderLaser, ob.transform.position, Quaternion.identity);
+                }
+
+                // Invaders �ker fr�n sida till sida
+
+                float speed = 1f;
+                ob.transform.position += speed * Time.deltaTime * direction;
+
+                Vector3 rightwall = new Vector3(15, -15, -10);
+                //Camera.main.ViewportToWorldPoint(Vector3.right);
+
+                Vector3 leftwall = new Vector3(-15, -15, -10);
+                //Camera.main.ViewportToWorldPoint(Vector3.zero);
+
+                if (direction == Vector3.right && ob.transform.position.x >= rightwall.x - 1f)
+                {
+                    print(rightwall + ", and " + leftwall);
+                    Advance();
+                    break;
+                }
+                else if (direction == Vector3.left && ob.transform.position.x <= leftwall.x + 1f)
+                {
+                    Advance();
+                    break;
+                }
+
+
             }
-
-            // Invaders �ker fr�n sida till sida
-
-            float speed = 1f;
-            ob.transform.position += speed * Time.deltaTime * direction;
-
-            Vector3 rightwall = new Vector3(15, -15, -10);
-            //Camera.main.ViewportToWorldPoint(Vector3.right);
-
-            Vector3 leftwall = new Vector3(-15, -15, -10);
-            //Camera.main.ViewportToWorldPoint(Vector3.zero);
-
-            if (direction == Vector3.right && ob.transform.position.x >= rightwall.x -1f )
-            {
-                print(rightwall + ", and " + leftwall);
-                Advance();
-                break;
-            } 
-            else if (direction == Vector3.left && ob.transform.position.x <= leftwall.x +1f)
-            {
-                Advance();
-                break;
-            }
-
-           
         }
+        
     }
 
     /// <summary>
