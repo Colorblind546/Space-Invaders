@@ -24,7 +24,6 @@ public class HomingMissile : Projectile
         {
             targetPosition = targetObject.transform.position;
         }
-        
         if (targetPosition != null)
         {
             FlyTowards(targetPosition);

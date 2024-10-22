@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle - 90);
         if (rb2D != null)
         {
-            rb2D.AddForce(transform.up * speed);
+            rb2D.AddForce(transform.up * speed * Time.deltaTime);
         }
     }
 

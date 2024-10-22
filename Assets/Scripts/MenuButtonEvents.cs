@@ -38,9 +38,41 @@ public class MenuButtonEvents : MonoBehaviour
         StartCoroutine(MoveFromCredits());
     }
 
+    public void OpenSettings()
+    {
+        print("Opening settings");
+        StartCoroutine(MoveToSettings());
+    }
+
+    public void ReturnFromSettings()
+    {
+        print("Returning from settings");
+        StartCoroutine(MoveFromSettings());
+    }
+
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    IEnumerator MoveToSettings()
+    {
+        while (Camera.main.gameObject.transform.position.y < 30)
+        {
+            Camera.main.gameObject.transform.position += new Vector3(0, 30, 0) * Time.deltaTime;
+            yield return null;
+        }
+        Camera.main.gameObject.transform.position = new Vector3(0, 30, -10);
+    }
+
+    IEnumerator MoveFromSettings()
+    {
+        while (Camera.main.gameObject.transform.position.y > 0)
+        {
+            Camera.main.gameObject.transform.position += new Vector3(0, -30, 0) * Time.deltaTime;
+            yield return null;
+        }
+        Camera.main.gameObject.transform.position = new Vector3(0, 0, -10);
     }
 
     IEnumerator MoveToCredits()
