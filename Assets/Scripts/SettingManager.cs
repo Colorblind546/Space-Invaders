@@ -11,6 +11,10 @@ public class SettingManager : MonoBehaviour
         {
             PlayerPrefs.SetFloat("GameSpeed", 1f);
         }
+        if (!PlayerPrefs.HasKey("MissileCooldown"))
+        {
+            PlayerPrefs.SetFloat("MissileCooldown", 15);
+        }
     }
 
     // Update is called once per frame
@@ -27,15 +31,17 @@ public class SettingManager : MonoBehaviour
     {
         PlayerPrefs.SetString("Difficulty", "easy");
         PlayerPrefs.SetFloat("GameSpeed", 0.8f);
+        PlayerPrefs.SetFloat("MissileCooldown", 10);
     }
 
     /// <summary>
-    /// Boring and still easy
+    /// Boring and still pretty easy
     /// </summary>
     public void SetDifficultyNormal()
     {
         PlayerPrefs.SetString("Difficulty", "normal");
         PlayerPrefs.SetFloat("GameSpeed", 1f);
+        PlayerPrefs.SetFloat("MissileCooldown", 20);
     }
 
     /// <summary>
@@ -45,6 +51,7 @@ public class SettingManager : MonoBehaviour
     {
         PlayerPrefs.SetString("Difficulty", "hard");
         PlayerPrefs.SetFloat("GameSpeed", 1.5f);
+        PlayerPrefs.SetFloat("MissileCooldown", 25);
     }
 
     /// <summary>
@@ -53,6 +60,7 @@ public class SettingManager : MonoBehaviour
     public void SetDifficultyBullshit()
     {
         PlayerPrefs.SetString("Difficulty", "bullshit");
-        PlayerPrefs.SetFloat("GameSpeed", 5f);
+        PlayerPrefs.SetFloat("GameSpeed", 3.5f);
+        PlayerPrefs.SetFloat("MissileCooldown", 35);
     }
 }

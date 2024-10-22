@@ -24,7 +24,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] float missileSpeed;
 
     // Missile cooldown
-    [SerializeField] float missileCooldown;
+    float missileCooldown;
     public float cooldownTimeElapsed = 0f;
 
     // Missile fire hold time
@@ -33,6 +33,14 @@ public class PlayerShooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (PlayerPrefs.HasKey("MissileCooldown"))
+        {
+            missileCooldown = PlayerPrefs.GetFloat("MissileCooldown");
+        }
+        else
+        {
+            print("No MissileCooldown exists");
+        }
         
     }
 
