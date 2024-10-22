@@ -82,18 +82,18 @@ public class GameManager : MonoBehaviour
         {
             // skjuter en laser rakt ner som kollar om n�got �r i v�gen
 
-            RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position - Vector3.up, -Vector2.up, 10f, invaderLayer);
+            //RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position - Vector3.up, -Vector2.up, 10f, invaderLayer);
             
             
-            if(hitcheck.collider == null && !cooldown)
-            {
+            //if(hitcheck.collider == null && !cooldown)
+            //{
               
-                    Instantiate(invaderLaser, ob.transform.position, Quaternion.identity);
-                    Invoke("resetcooldown", 1f);
-                    cooldown = true;
+            //        Instantiate(invaderLaser, ob.transform.position, Quaternion.identity);
+            //        Invoke("resetcooldown", 1f);
+            //        cooldown = true;
        
                 
-            }
+            //}
         }
 
        
