@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     // Current GameManager instance
     private static GameManager _instance;
 
+    //cooldown for invaders shooting
+    bool cooldown;
+
     // Om GameManager inte finns s� skriver den ett error i logs 
     public static GameManager Instance
     {
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        cooldown = false;
         position = transform.position; // This is never used, should we remove it?
 
         
@@ -74,44 +78,30 @@ public class GameManager : MonoBehaviour
 
        
 
-
-        foreach (GameObject ob in invaders.Invaderss) // Best�mmer vad varje invader gameobject ska g�ra 
+        if (invaders.Invaderss.Count > 0)
         {
             // skjuter en laser rakt ner som kollar om n�got �r i v�gen
 
-            RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position - Vector3.up, -Vector2.up, 20f, invaderLayer);
+            RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position - Vector3.up, -Vector2.up, 10f, invaderLayer);
             
             
-            if(hitcheck.collider == null)
+            if(hitcheck.collider == null && !cooldown)
             {
-                //Instantiate(invaderLaser, ob.transform.position, Quaternion.identity);
+              
+                    Instantiate(invaderLaser, ob.transform.position, Quaternion.identity);
+                    Invoke("resetcooldown", 1f);
+                    cooldown = true;
+       
+                
             }
-
-            // Invaders �ker fr�n sida till sida
-
-            float speed = 1f;
-            ob.transform.position += speed * Time.deltaTime * direction;
-
-            Vector3 rightwall = new Vector3(15, -15, -10);
-            //Camera.main.ViewportToWorldPoint(Vector3.right);
-
-            Vector3 leftwall = new Vector3(-15, -15, -10);
-            //Camera.main.ViewportToWorldPoint(Vector3.zero);
-
-            if (direction == Vector3.right && ob.transform.position.x >= rightwall.x -1f )
-            {
-                print(rightwall + ", and " + leftwall);
-                Advance();
-                break;
-            } 
-            else if (direction == Vector3.left && ob.transform.position.x <= leftwall.x +1f)
-            {
-                Advance();
-                break;
-            }
-
-           
         }
+
+       
+    }
+
+    void resetcooldown()
+    {
+        cooldown = false;
     }
 
     /// <summary>
@@ -126,6 +116,6 @@ public class GameManager : MonoBehaviour
             position.y -= 1f;
             invaderObj.transform.position = position;
         }
-        
+   
     }
 }
