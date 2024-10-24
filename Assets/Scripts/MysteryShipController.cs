@@ -150,7 +150,7 @@ public class MysteryShipController : MonoBehaviour
         MoveShipToTarget();
         
 
-        if (health >= 0)
+        if (health <= 0)
         {
             ShipDeath();
         }
