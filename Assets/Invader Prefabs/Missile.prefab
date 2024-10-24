@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6830926834543021881}
   - component: {fileID: 1809819473229769540}
   - component: {fileID: 7286799881944765823}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Fire Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4841,7 +4841,7 @@ GameObject:
   - component: {fileID: 876952268999362985}
   - component: {fileID: 236322541412976351}
   - component: {fileID: -8493660616876425368}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Missile
   m_TagString: missile
   m_Icon: {fileID: 0}
@@ -5014,7 +5014,7 @@ GameObject:
   - component: {fileID: 7513726837644097196}
   - component: {fileID: 3365986726009773262}
   - component: {fileID: 3032426510144432416}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Smoke Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

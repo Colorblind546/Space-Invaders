@@ -110,7 +110,7 @@ public class PlayerShooting : MonoBehaviour
     /// </summary>
     IEnumerator FireTheICBMBarrage()
     {
-        Collider2D[] invaderColliders = Physics2D.OverlapCircleAll(transform.position, 45, invaderLayer);
+        Collider2D[] invaderColliders = Physics2D.OverlapCircleAll(transform.position, 60, invaderLayer);
         foreach (Collider2D collider in invaderColliders)
         {
             print(collider.name);

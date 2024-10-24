@@ -23,6 +23,12 @@ public class GameManager : MonoBehaviour
     // Current GameManager instance
     private static GameManager _instance;
 
+    //cooldown for invaders shooting
+
+ 
+
+   
+
     // Om GameManager inte finns s� skriver den ett error i logs 
     public static GameManager Instance
     {
@@ -41,7 +47,9 @@ public class GameManager : MonoBehaviour
     // Kollar om GameManager redan finns n�r spelet startar, om det g�r det s� f�rst�rs det. Annars s� g�r det s� att den inte f�rst�rs n�r den laddar. 
 
     private void Awake()
+        
     {
+        
         position = transform.position; // This is never used, should we remove it?
 
         
@@ -72,19 +80,26 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-       
 
 
         foreach (GameObject ob in invaders.Invaderss) // Best�mmer vad varje invader gameobject ska g�ra 
         {
             // skjuter en laser rakt ner som kollar om n�got �r i v�gen
 
-            RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position - Vector3.up, -Vector2.up, 20f, invaderLayer);
-            
-            
-            if(hitcheck.collider == null)
+            RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position - Vector3.up, -Vector2.up, 10f, invaderLayer);
+
+            Invader invader = ob.GetComponent<Invader>();
+
+
+            if (hitcheck.collider == null && !invader.cooldown)
             {
-                //Instantiate(invaderLaser, ob.transform.position, Quaternion.identity);
+
+                   Instantiate(invaderLaser, ob.transform.position, Quaternion.identity);
+                   invader.InvaderCooldown();
+                   
+               
+              
+
             }
 
             // Invaders �ker fr�n sida till sida
@@ -98,21 +113,26 @@ public class GameManager : MonoBehaviour
             Vector3 leftwall = new Vector3(-15, -15, -10);
             //Camera.main.ViewportToWorldPoint(Vector3.zero);
 
-            if (direction == Vector3.right && ob.transform.position.x >= rightwall.x -1f )
+            if (direction == Vector3.right && ob.transform.position.x >= rightwall.x - 1f)
             {
                 print(rightwall + ", and " + leftwall);
                 Advance();
                 break;
-            } 
-            else if (direction == Vector3.left && ob.transform.position.x <= leftwall.x +1f)
+            }
+            else if (direction == Vector3.left && ob.transform.position.x <= leftwall.x + 1f)
             {
                 Advance();
                 break;
             }
 
-           
         }
+
+
     }
+
+ 
+
+    
 
     /// <summary>
     /// Moves invaders down a step, apppoaching the player
