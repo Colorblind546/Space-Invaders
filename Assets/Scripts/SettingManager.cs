@@ -27,6 +27,7 @@ public class SettingManager : MonoBehaviour
     {
         PlayerPrefs.SetString("Difficulty", "easy");
         PlayerPrefs.SetFloat("MissileCooldown", 10);
+        PlayerPrefs.SetFloat("PlayerHealth", 10);
 
         // Boss Settings
         PlayerPrefs.SetFloat("HoverWait", 7.5f);
@@ -48,6 +49,7 @@ public class SettingManager : MonoBehaviour
     {
         PlayerPrefs.SetString("Difficulty", "normal");
         PlayerPrefs.SetFloat("MissileCooldown", 20);
+        PlayerPrefs.SetFloat("PlayerHealth", 5);
 
         // Boss Settings
         PlayerPrefs.SetFloat("HoverWait", 5f);
@@ -69,6 +71,7 @@ public class SettingManager : MonoBehaviour
     {
         PlayerPrefs.SetString("Difficulty", "hard");
         PlayerPrefs.SetFloat("MissileCooldown", 25);
+        PlayerPrefs.SetFloat("PlayerHealth", 3);
 
         // Boss Settings
         PlayerPrefs.SetFloat("HoverWait", 4f);
@@ -90,6 +93,7 @@ public class SettingManager : MonoBehaviour
     {
         PlayerPrefs.SetString("Difficulty", "bullshit");
         PlayerPrefs.SetFloat("MissileCooldown", 35);
+        PlayerPrefs.SetFloat("PlayerHealth", 1);
 
         // Boss Settings
         PlayerPrefs.SetFloat("HoverWait", 3f);
