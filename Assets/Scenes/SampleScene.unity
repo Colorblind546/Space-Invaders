@@ -1764,7 +1764,6 @@ MonoBehaviour:
   bulletSpeed: 10
   missile: {fileID: 1492434499997032799, guid: 021edc0b440d93b4eb3b172e95dee3cf, type: 3}
   missileSpeed: 7.5
-  missileCooldown: 5
   cooldownTimeElapsed: 0
   missileHold: 1
 --- !u!114 &1894710738
@@ -1822,7 +1821,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invaders: {fileID: 350839879}
-  enemylaser: {fileID: 1221257828946106467, guid: d15d7557d3fab60429d7b57da618d6d6, type: 3}
+  invaderLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  invaderLaser: {fileID: 1221257828946106467, guid: d15d7557d3fab60429d7b57da618d6d6, type: 3}
 --- !u!4 &2039186662
 Transform:
   m_ObjectHideFlags: 0
