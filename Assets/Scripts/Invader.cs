@@ -15,6 +15,8 @@ public class Invader : MonoBehaviour
     public float timeBetweenFrames;
     int currentFrame;
 
+   public bool cooldown;
+
     // Camera object
     GameObject cameraObj;
     screenShake_01 screenShake;
@@ -28,6 +30,7 @@ public class Invader : MonoBehaviour
 
     private void Awake()
     {
+        cooldown = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
         cameraObj = Camera.main.gameObject;
         screenShake = cameraObj.GetComponent<screenShake_01>();
@@ -91,5 +94,16 @@ public class Invader : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+
+    public void InvaderCooldown()
+    {
+        Invoke("Resetcooldown", 1f);
+        cooldown = true;
+    }
+
+   public void Resetcooldown()
+    {
+        cooldown = false;
+    }
 
 }
