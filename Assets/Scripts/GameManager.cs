@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
 
     //cooldown for invaders shooting
+
     bool cooldown;
 
     // Om GameManager inte finns s� skriver den ett error i logs 
@@ -44,7 +45,9 @@ public class GameManager : MonoBehaviour
     // Kollar om GameManager redan finns n�r spelet startar, om det g�r det s� f�rst�rs det. Annars s� g�r det s� att den inte f�rst�rs n�r den laddar. 
 
     private void Awake()
+        
     {
+        
         cooldown = false;
         position = transform.position; // This is never used, should we remove it?
 
@@ -89,8 +92,9 @@ public class GameManager : MonoBehaviour
             {
 
                    Instantiate(invaderLaser, ob.transform.position, Quaternion.identity);
-                  Invoke("resetcooldown", 1f);
+                   Invoke("resetcooldown", 1f);
                    cooldown = true;
+               
 
 
             }
