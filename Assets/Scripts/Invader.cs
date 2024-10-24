@@ -15,6 +15,8 @@ public class Invader : MonoBehaviour
     public float timeBetweenFrames;
     int currentFrame;
 
+    bool cooldown;
+
     // Camera object
     GameObject cameraObj;
     screenShake_01 screenShake;
