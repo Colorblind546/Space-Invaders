@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Invader : MonoBehaviour
@@ -14,7 +15,7 @@ public class Invader : MonoBehaviour
     // Time between frames and current active frame
     public float timeBetweenFrames;
     int currentFrame;
-
+    // Cooldown on invaders shooting
    public bool cooldown;
 
     // Camera object
@@ -28,9 +29,17 @@ public class Invader : MonoBehaviour
     // Score yielded
     [SerializeField] int score;
 
+    Invader invader;
+
+    // Bool for if invader exists
+    public bool invaderexist;
+
+
+
     private void Awake()
     {
         cooldown = false;
+        invaderexist = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
         cameraObj = Camera.main.gameObject;
         screenShake = cameraObj.GetComponent<screenShake_01>();
@@ -55,6 +64,9 @@ public class Invader : MonoBehaviour
     {
         GotHit();
         Destroy(collision.gameObject);
+        invaderexist = false;
+        // Makes it so that when an invader is hit, it is destroyed and can't shoot anymore
+        
     }
 
     /// <summary>

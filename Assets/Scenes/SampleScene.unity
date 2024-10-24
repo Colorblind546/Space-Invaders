@@ -1823,7 +1823,7 @@ MonoBehaviour:
   invaders: {fileID: 350839879}
   invaderLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   invaderLaser: {fileID: 1221257828946106467, guid: d15d7557d3fab60429d7b57da618d6d6, type: 3}
 --- !u!4 &2039186662
 Transform:

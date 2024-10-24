@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
             Invader invader = ob.GetComponent<Invader>();
 
 
-            if (hitcheck.collider == null && !invader.cooldown)
+            if (hitcheck.collider == null && !invader.cooldown && invader.invaderexist == true)
             {
 
                    Instantiate(invaderLaser, ob.transform.position, Quaternion.identity);
