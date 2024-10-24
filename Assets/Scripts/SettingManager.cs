@@ -7,10 +7,6 @@ public class SettingManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!PlayerPrefs.HasKey("GameSpeed"))
-        {
-            PlayerPrefs.SetFloat("GameSpeed", 1f);
-        }
         if (!PlayerPrefs.HasKey("MissileCooldown"))
         {
             PlayerPrefs.SetFloat("MissileCooldown", 15);
@@ -20,7 +16,7 @@ public class SettingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Time.timeScale = PlayerPrefs.GetFloat("GameSpeed");
+
     }
 
 
@@ -30,7 +26,6 @@ public class SettingManager : MonoBehaviour
     public void SetDifficultyEasy()
     {
         PlayerPrefs.SetString("Difficulty", "easy");
-        PlayerPrefs.SetFloat("GameSpeed", 0.8f);
         PlayerPrefs.SetFloat("MissileCooldown", 10);
     }
 
@@ -40,7 +35,6 @@ public class SettingManager : MonoBehaviour
     public void SetDifficultyNormal()
     {
         PlayerPrefs.SetString("Difficulty", "normal");
-        PlayerPrefs.SetFloat("GameSpeed", 1f);
         PlayerPrefs.SetFloat("MissileCooldown", 20);
     }
 
@@ -50,7 +44,6 @@ public class SettingManager : MonoBehaviour
     public void SetDifficultyHard()
     {
         PlayerPrefs.SetString("Difficulty", "hard");
-        PlayerPrefs.SetFloat("GameSpeed", 1.5f);
         PlayerPrefs.SetFloat("MissileCooldown", 25);
     }
 
@@ -60,7 +53,6 @@ public class SettingManager : MonoBehaviour
     public void SetDifficultyBullshit()
     {
         PlayerPrefs.SetString("Difficulty", "bullshit");
-        PlayerPrefs.SetFloat("GameSpeed", 3.5f);
         PlayerPrefs.SetFloat("MissileCooldown", 35);
     }
 }
