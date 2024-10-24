@@ -48,7 +48,7 @@ public class PlayerShooting : MonoBehaviour
     void Update()
     {
         // Calls Shoot when spacebar is pressed if there are no bullets onscreen
-        if (Input.GetKeyDown(KeyCode.Space) && lastFiredBullet == null)
+        if (Input.GetKeyDown(KeyCode.Space)/* && lastFiredBullet == null*/)
         {
             Shoot();
         }
