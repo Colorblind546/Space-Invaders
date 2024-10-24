@@ -6,7 +6,7 @@ public class ScoreBoard_01 : MonoBehaviour
 {
 
     public int score = 0;
-    TMP_Text scoreText;
+    public TMP_Text scoreText;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +33,6 @@ public class ScoreBoard_01 : MonoBehaviour
     /// <param name="points"></param>
     public void UpdateScorce (int points)
     {
-        print("recieved points: " + points);
         score += points;
         scoreText.text = "Score: " + score;
     }
