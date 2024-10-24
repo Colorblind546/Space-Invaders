@@ -495,6 +495,7 @@ GameObject:
   - component: {fileID: 437579426}
   - component: {fileID: 437579428}
   - component: {fileID: 437579429}
+  - component: {fileID: 437579430}
   m_Layer: 10
   m_Name: Bunker (1)
   m_TagString: Untagged
@@ -641,6 +642,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.625, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &437579430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437579425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e8afc75cafd524c83d791a44fba1a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,6 +795,7 @@ GameObject:
   - component: {fileID: 537277005}
   - component: {fileID: 537277007}
   - component: {fileID: 537277008}
+  - component: {fileID: 537277009}
   m_Layer: 10
   m_Name: Bunker (3)
   m_TagString: Untagged
@@ -928,6 +942,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.625, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &537277009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537277004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e8afc75cafd524c83d791a44fba1a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &567395692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1013,6 +1039,7 @@ GameObject:
   - component: {fileID: 609531375}
   - component: {fileID: 609531377}
   - component: {fileID: 609531378}
+  - component: {fileID: 609531379}
   m_Layer: 10
   m_Name: Bunker (2)
   m_TagString: Untagged
@@ -1159,6 +1186,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.625, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &609531379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609531374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e8afc75cafd524c83d791a44fba1a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &926778717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1435,6 +1474,7 @@ GameObject:
   - component: {fileID: 1053419604}
   - component: {fileID: 1053419603}
   - component: {fileID: 1053419602}
+  - component: {fileID: 1053419605}
   m_Layer: 10
   m_Name: Bottom Border
   m_TagString: Untagged
@@ -1523,12 +1563,24 @@ Transform:
   m_GameObject: {fileID: 1053419601}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -15, z: 0}
+  m_LocalPosition: {x: 0, y: -16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1053419605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053419601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e8afc75cafd524c83d791a44fba1a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1634416632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1541,6 +1593,7 @@ GameObject:
   - component: {fileID: 1634416633}
   - component: {fileID: 1634416635}
   - component: {fileID: 1634416636}
+  - component: {fileID: 1634416637}
   m_Layer: 10
   m_Name: Bunker
   m_TagString: Untagged
@@ -1687,6 +1740,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.625, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1634416637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634416632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e8afc75cafd524c83d791a44fba1a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1894710731
 GameObject:
   m_ObjectHideFlags: 0
