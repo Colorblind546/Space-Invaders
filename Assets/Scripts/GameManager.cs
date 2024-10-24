@@ -23,6 +23,12 @@ public class GameManager : MonoBehaviour
     // Current GameManager instance
     private static GameManager _instance;
 
+    //cooldown for invaders shooting
+
+ 
+
+   
+
     // Om GameManager inte finns s� skriver den ett error i logs 
     public static GameManager Instance
     {
@@ -43,6 +49,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
         
     {
+        
         position = transform.position; // This is never used, should we remove it?
 
         
@@ -81,15 +88,17 @@ public class GameManager : MonoBehaviour
 
             RaycastHit2D hitcheck = Physics2D.Raycast(ob.transform.position - Vector3.up, -Vector2.up, 10f, invaderLayer);
 
+            Invader invader = ob.GetComponent<Invader>();
 
-            if(hitcheck.collider == null && !cooldown)
+
+            if (hitcheck.collider == null && !invader.cooldown)
             {
 
                    Instantiate(invaderLaser, ob.transform.position, Quaternion.identity);
-                   Invoke("resetcooldown", 1f);
-                   cooldown = true;
+                   invader.InvaderCooldown();
+                   
                
-
+              
 
             }
 
@@ -118,7 +127,13 @@ public class GameManager : MonoBehaviour
 
            
         }
+
+
     }
+
+ 
+
+    
 
     /// <summary>
     /// Moves invaders down a step, apppoaching the player
