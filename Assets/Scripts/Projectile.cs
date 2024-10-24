@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
     protected Rigidbody2D rb2D;
     public float speed;
 
+    public string projectileType;
+
     /// <summary>
     /// Tells projectile wheter to move it up or down, based on whether string reads "up" or "down", and sets velocity to that
     /// </summary>
@@ -38,6 +40,22 @@ public class Projectile : MonoBehaviour
         {
             rb2D.AddForce(transform.up * speed * Time.deltaTime);
         }
+    }
+
+    public void MoveAimedProjectile(Vector3 target)
+    {
+        Vector3 direction = target - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+
+        print(transform.up);
+        print(speed);
+
+        rb2D.velocity = transform.up * speed;
+        print(rb2D.velocity);
+        
+
+
     }
 
 }
