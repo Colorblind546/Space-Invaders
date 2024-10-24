@@ -12,12 +12,13 @@ public class MysteryShipController : MonoBehaviour
     float shipTargetSpeed;
     float rushDistance;
     float rushAttackSpeed;
+    float attackSpeed;
     int missileBarrageAmount;
     float laserSpeed;
+    float health;
 
 
     // Projectiles
-    [SerializeField] GameObject laserAimed;
     [SerializeField] GameObject laser;
     [SerializeField] GameObject missile;
 
@@ -31,7 +32,7 @@ public class MysteryShipController : MonoBehaviour
         Rush, Hover, Evade
     };
 
-    InvaderStates state;
+    [SerializeField] InvaderStates state;
 
     // Explosion effects
     [SerializeField] GameObject bloodyExplosionEffect;
@@ -46,8 +47,9 @@ public class MysteryShipController : MonoBehaviour
     // RigidBody2D
     Rigidbody2D rb2d;
 
-    // Current running coroutine
-    Coroutine currentCoroutine;
+    // Current running coroutines
+    Coroutine currentStateCoroutine;
+    Coroutine constantFire;
 
     // Target and target's target
     /// <summary>
@@ -72,7 +74,7 @@ public class MysteryShipController : MonoBehaviour
         SetDifficultySettings();
         rb2d = GetComponent<Rigidbody2D>();
         lastFramePos = transform.position;
-        state = InvaderStates.Rush;
+        state = InvaderStates.Hover;
         
     }
 
@@ -88,14 +90,22 @@ public class MysteryShipController : MonoBehaviour
         fakeVelocity = (transform.position - lastFramePos) / Time.deltaTime;
         lastFramePos = transform.position;
 
+        if (constantFire == null)
+        {
+            constantFire = StartCoroutine(ConstantFire());
+        }
+
+
+
+
 
         switch (state)
         {
             case InvaderStates.Hover:
                 {
-                    if (currentCoroutine == null)
+                    if (currentStateCoroutine == null)
                     {
-                        currentCoroutine = StartCoroutine(ShipHover());
+                        currentStateCoroutine = StartCoroutine(ShipHover());
                     }
                     
 
@@ -103,19 +113,19 @@ public class MysteryShipController : MonoBehaviour
                 }
             case InvaderStates.Evade:
                 {
-                    if (currentCoroutine == null)
+                    if (currentStateCoroutine == null)
                     {
-                        currentCoroutine = StartCoroutine(EvadeProjectiles());
+                        currentStateCoroutine = StartCoroutine(EvadeProjectiles());
                     }
                     break;
                 }
             case InvaderStates.Rush:
                 {
-                    if (currentCoroutine == null)
+                    if (currentStateCoroutine == null)
                     {
                         print("Rush");
-                        print(currentCoroutine);
-                        currentCoroutine = StartCoroutine(RushPlayer());
+                        print(currentStateCoroutine);
+                        currentStateCoroutine = StartCoroutine(RushPlayer());
                     }
                     break;
                 }
@@ -140,14 +150,44 @@ public class MysteryShipController : MonoBehaviour
         MoveShipToTarget();
         
 
-        
+        if (health >= 0)
+        {
+            ShipDeath();
+        }
+
+    }
+
+
+    IEnumerator ConstantFire()
+    {
+
+        while (true)
+        {
+
+            if (PlayerPrefs.GetString("Difficulty") == "bullshit" || PlayerPrefs.GetString("Difficulty") == "hard")
+            {
+                AimingShoot();
+                if (PlayerPrefs.GetString("Difficulty") == "bullshit")
+                {
+                    AimingShoot();
+                }
+            }
+            else if (PlayerPrefs.GetString("Difficulty") == "normal" || PlayerPrefs.GetString("Difficulty") == "easy")
+            {
+                Shoot();
+
+            }
+
+
+            yield return new WaitForSeconds(attackSpeed);
+        }
 
     }
 
     IEnumerator RushPlayer()
     {
         int fury = 15;
-
+        StopCoroutine(constantFire);
         while (state == InvaderStates.Rush)
         {
 
@@ -164,7 +204,7 @@ public class MysteryShipController : MonoBehaviour
                         AimingShoot();
                     }
                 }
-                else
+                else if (PlayerPrefs.GetString("Difficulty") == "normal"|| PlayerPrefs.GetString("Difficulty") == "easy")
                 {
                     Shoot();
                     
@@ -175,12 +215,20 @@ public class MysteryShipController : MonoBehaviour
             }
             else
             {
-                state = InvaderStates.Evade;
+                if (Random.value > 0.5f)
+                {
+                    state = InvaderStates.Evade;
+                }
+                else
+                {
+                    state = InvaderStates.Hover;
+                }
+                
             }
 
         }
-
-       
+        StartCoroutine(ConstantFire());
+        currentStateCoroutine = null;
     }
 
 
@@ -190,19 +238,74 @@ public class MysteryShipController : MonoBehaviour
     /// <returns></returns>
     IEnumerator EvadeProjectiles()
     {
-
+        int duration = 5;
         while (state == InvaderStates.Evade)
         {
-
-            if (Mathf.Abs(playerObj.transform.position.x - targetsTargetPos.x) < 2)
+            if (duration > 0)
             {
-                EvasiveManeuver();
-                yield return new WaitForSeconds(2.5f);
+                if (Mathf.Abs(playerObj.transform.position.x - targetsTargetPos.x) < 2)
+                {
+                    duration--;
+                    EvasiveManeuver();
+                    yield return new WaitForSeconds(1f);
+                }
+                else
+                {
+                    duration--;
+                    yield return new WaitForSeconds(1f);
+                }
+                
             }
-
-            yield return null;
+            else
+            {
+                if (Random.value > 0.5f)
+                {
+                    state = InvaderStates.Rush;
+                }
+                else
+                {
+                    state = InvaderStates.Hover;
+                }
+            }
         }
+        currentStateCoroutine = null;
 
+    }
+
+    /// <summary>
+    /// Makes ship hover, floating back and forth on screen
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator ShipHover()
+    {
+        int duration = 5;
+
+        while (state == InvaderStates.Hover)
+        {
+            if (duration > 0)
+            {
+                targetsTargetPos = new Vector2(-13f, 12f);
+                duration--;
+                yield return new WaitForSeconds(hoverWaitTime);
+
+
+                targetsTargetPos = new Vector2(13f, 12f);
+                duration--;
+                yield return new WaitForSeconds(hoverWaitTime);
+            }
+            else
+            {
+                if (Random.value > 0.3f)
+                {
+                    state = InvaderStates.Rush;
+                }
+                else
+                {
+                    state = InvaderStates.Evade;
+                }
+            }
+        }
+        currentStateCoroutine = null;
     }
 
     /// <summary>
@@ -220,13 +323,13 @@ public class MysteryShipController : MonoBehaviour
     /// </summary>
     void AimingShoot()
     {
-        GameObject laserObj = Instantiate(laserAimed, transform.position, Quaternion.identity);
+        GameObject laserObj = Instantiate(laser, transform.position, Quaternion.identity);
         Projectile laserProjectile = laserObj.GetComponent<Projectile>();
         laserProjectile.speed = laserSpeed;
         laserProjectile.projectileType = "aimed";
         if (playerObj != null)
         {
-            laserProjectile.MoveAimedProjectile(Random.insideUnitCircle * 2.5f + (Vector2)playerObj.transform.position);
+            laserProjectile.MoveAimedProjectile(Random.insideUnitCircle * 2f + (Vector2)playerObj.transform.position);
         }
         
         
@@ -255,7 +358,7 @@ public class MysteryShipController : MonoBehaviour
 
     void EvasiveManeuver()
     {
-        targetsTargetPos = new Vector3(Random.Range(-13, 13), targetsTargetPos.y, targetsTargetPos.z);
+        targetsTargetPos = new Vector3(Random.Range(-13, 13), 13, targetsTargetPos.z);
     }
 
     /// <summary>
@@ -275,25 +378,7 @@ public class MysteryShipController : MonoBehaviour
         transform.position = Vector2.SmoothDamp(transform.position, targetPos, ref fakeVelocity, smoothDampTime);
     }
 
-    /// <summary>
-    /// Makes ship hover, floating back and forth on screen
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator ShipHover()
-    {
-        
-
-        while (state == InvaderStates.Hover)
-        {
-            targetsTargetPos = new Vector2(-13f, 12f);
-
-            yield return new WaitForSeconds(5f);
-
-            targetsTargetPos = new Vector2(13f, 12f);
-
-            yield return new WaitForSeconds(5f);
-        }
-    }
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -306,6 +391,7 @@ public class MysteryShipController : MonoBehaviour
     /// </summary>
     void OnHit()
     {
+        health--;
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
         StartCoroutine(Shake(0.1f));
     }
@@ -332,6 +418,7 @@ public class MysteryShipController : MonoBehaviour
     void ShipDeath()
     {
         Instantiate(bloodyExplosionEffect, transform.position, Quaternion.identity);
+        gameObject.SetActive(false);
     }
 
     void FindPlayer()
@@ -346,14 +433,16 @@ public class MysteryShipController : MonoBehaviour
     void SetDifficultySettings()
     {
 
-         hoverWaitTime = 3;
-         smoothDampTime = 0.5f;
-         shipTargetSpeed = 15;
-         rushDistance = 10;
-         rushAttackSpeed = 1;
-         missileBarrageAmount = 3;
-         laserSpeed = 5;
 
+        hoverWaitTime = PlayerPrefs.GetFloat("HoverWait");
+        smoothDampTime = PlayerPrefs.GetFloat("Acceleration");
+        shipTargetSpeed = PlayerPrefs.GetFloat("ShipSpeed");
+        rushDistance = PlayerPrefs.GetFloat("RushDistance");
+        rushAttackSpeed = PlayerPrefs.GetFloat("RushAttackSpeed");
+        attackSpeed = PlayerPrefs.GetFloat("AttackSpeed");
+        missileBarrageAmount = PlayerPrefs.GetInt("BarrageAmount");
+        laserSpeed = PlayerPrefs.GetFloat("LaserSpeed");
+        health = PlayerPrefs.GetInt("Health");
 
 
     }

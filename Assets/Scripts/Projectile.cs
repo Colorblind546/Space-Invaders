@@ -42,17 +42,17 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Aims and moves lasers
+    /// </summary>
+    /// <param name="target"></param>
     public void MoveAimedProjectile(Vector3 target)
     {
         Vector3 direction = target - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle - 90);
 
-        print(transform.up);
-        print(speed);
-
         rb2D.velocity = transform.up * speed;
-        print(rb2D.velocity);
         
 
 
