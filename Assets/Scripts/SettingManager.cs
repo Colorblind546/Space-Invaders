@@ -27,6 +27,7 @@ public class SettingManager : MonoBehaviour
     {
         PlayerPrefs.SetString("Difficulty", "easy");
         PlayerPrefs.SetFloat("MissileCooldown", 10);
+        PlayerPrefs.SetFloat("PlayerHealth", 10);
 
         // Boss Settings
         PlayerPrefs.SetFloat("HoverWait", 7.5f);
@@ -37,6 +38,7 @@ public class SettingManager : MonoBehaviour
         PlayerPrefs.SetFloat("AttackSpeed", 7.5f);
         PlayerPrefs.SetInt("BarrageAmount", 1);
         PlayerPrefs.SetFloat("LaserSpeed", 5);
+        PlayerPrefs.SetFloat("BossMissileBarrageCooldown", 30);
         PlayerPrefs.SetInt("Health", 15);
     }
 
@@ -47,6 +49,7 @@ public class SettingManager : MonoBehaviour
     {
         PlayerPrefs.SetString("Difficulty", "normal");
         PlayerPrefs.SetFloat("MissileCooldown", 20);
+        PlayerPrefs.SetFloat("PlayerHealth", 5);
 
         // Boss Settings
         PlayerPrefs.SetFloat("HoverWait", 5f);
@@ -57,6 +60,7 @@ public class SettingManager : MonoBehaviour
         PlayerPrefs.SetFloat("AttackSpeed", 4f);
         PlayerPrefs.SetInt("BarrageAmount", 3);
         PlayerPrefs.SetFloat("LaserSpeed", 7.5f);
+        PlayerPrefs.SetFloat("BossMissileBarrageCooldown", 20);
         PlayerPrefs.SetInt("Health", 30);
     }
 
@@ -67,6 +71,7 @@ public class SettingManager : MonoBehaviour
     {
         PlayerPrefs.SetString("Difficulty", "hard");
         PlayerPrefs.SetFloat("MissileCooldown", 25);
+        PlayerPrefs.SetFloat("PlayerHealth", 3);
 
         // Boss Settings
         PlayerPrefs.SetFloat("HoverWait", 4f);
@@ -77,6 +82,7 @@ public class SettingManager : MonoBehaviour
         PlayerPrefs.SetFloat("AttackSpeed", 2.5f);
         PlayerPrefs.SetInt("BarrageAmount", 5);
         PlayerPrefs.SetFloat("LaserSpeed", 10);
+        PlayerPrefs.SetFloat("BossMissileBarrageCooldown", 15);
         PlayerPrefs.SetInt("Health", 75);
     }
 
@@ -87,6 +93,7 @@ public class SettingManager : MonoBehaviour
     {
         PlayerPrefs.SetString("Difficulty", "bullshit");
         PlayerPrefs.SetFloat("MissileCooldown", 35);
+        PlayerPrefs.SetFloat("PlayerHealth", 1);
 
         // Boss Settings
         PlayerPrefs.SetFloat("HoverWait", 3f);
@@ -97,6 +104,7 @@ public class SettingManager : MonoBehaviour
         PlayerPrefs.SetFloat("AttackSpeed", 2f);
         PlayerPrefs.SetInt("BarrageAmount", 7);
         PlayerPrefs.SetFloat("LaserSpeed", 10);
+        PlayerPrefs.SetFloat("BossMissileBarrageCooldown", 12.5f);
         PlayerPrefs.SetInt("Health", 150);
     }
 }

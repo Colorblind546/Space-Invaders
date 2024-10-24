@@ -15,6 +15,7 @@ public class MysteryShipController : MonoBehaviour
     float attackSpeed;
     int missileBarrageAmount;
     float laserSpeed;
+    float barrageCooldown;
     float health;
 
 
@@ -50,6 +51,7 @@ public class MysteryShipController : MonoBehaviour
     // Current running coroutines
     Coroutine currentStateCoroutine;
     Coroutine constantFire;
+    Coroutine constantBarrage;
 
     // Target and target's target
     /// <summary>
@@ -93,6 +95,10 @@ public class MysteryShipController : MonoBehaviour
         if (constantFire == null)
         {
             constantFire = StartCoroutine(ConstantFire());
+        }
+        if (constantBarrage == null)
+        {
+            constantBarrage = StartCoroutine(BarrageRandom());
         }
 
 
@@ -180,6 +186,20 @@ public class MysteryShipController : MonoBehaviour
 
 
             yield return new WaitForSeconds(attackSpeed);
+        }
+
+    }
+
+    IEnumerator BarrageRandom()
+    {
+
+        while (true)
+        {
+
+            yield return new WaitForSeconds(barrageCooldown);
+            StartCoroutine(MissileBarrage());
+
+
         }
 
     }
@@ -442,6 +462,7 @@ public class MysteryShipController : MonoBehaviour
         attackSpeed = PlayerPrefs.GetFloat("AttackSpeed");
         missileBarrageAmount = PlayerPrefs.GetInt("BarrageAmount");
         laserSpeed = PlayerPrefs.GetFloat("LaserSpeed");
+        barrageCooldown = PlayerPrefs.GetFloat("BossMissileBarrageCooldown");
         health = PlayerPrefs.GetInt("Health");
 
 
