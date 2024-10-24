@@ -42,6 +42,19 @@ public class MenuButtonEvents : MonoBehaviour
 
     }
 
+    public void RestartGame()
+    {
+        print("Restart");
+        SceneManager.LoadScene(1);
+
+    }
+
+    public void MainMenu()
+    {
+        print("Main menu");
+        SceneManager.LoadScene(0);
+    }
+
     /// <summary>
     /// Calls MoveToCredits
     /// </summary>
