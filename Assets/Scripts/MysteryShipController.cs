@@ -195,9 +195,16 @@ public class MysteryShipController : MonoBehaviour
 
         while (true)
         {
-
-            yield return new WaitForSeconds(barrageCooldown);
-            StartCoroutine(MissileBarrage());
+            if (state != InvaderStates.Rush)
+            {
+                yield return new WaitForSeconds(barrageCooldown);
+                StartCoroutine(MissileBarrage());
+            }
+            else
+            {
+                yield return new WaitForSeconds(1);
+            }
+            
 
 
         }
