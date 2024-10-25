@@ -70,6 +70,10 @@ public class MysteryShipController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Setting start positions for targets
+        targetsTargetPos = new Vector3(-13, 13, 0);
+        targetPos = transform.position;
+
         mainCamera = Camera.main.gameObject;
         screenShake = mainCamera.GetComponent<screenShake_01>();
 
@@ -429,28 +433,10 @@ public class MysteryShipController : MonoBehaviour
     {
         health--;
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
-        StartCoroutine(Shake(0.1f));
         screenShake.StartCoroutine(screenShake.Shaking());
     }
 
-    /// <summary>
-    /// Shakes the ship
-    /// </summary>
-    /// <param name="duration"></param>
-    /// <returns></returns>
-    IEnumerator Shake(float duration)
-    {
-        Vector2 basePosition = transform.position;
-        float timeElapsed = 0;
-        while (timeElapsed < duration)
-        {
-            transform.position = basePosition + Random.insideUnitCircle * 0.5f;
-            timeElapsed += Time.deltaTime;
-            yield return null;
-        }
-        transform.position = basePosition;
-        fakeVelocity = Vector2.zero;
-    }
+    
 
     void ShipDeath()
     {

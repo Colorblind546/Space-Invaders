@@ -11,8 +11,9 @@ public class PlayerShooting : MonoBehaviour
     // Bullet to be fired with the Shoot method
     [SerializeField] GameObject bullet;
 
-    // Last fired bullet to keep track of whether there is a bullet fired by the player that is still onscreen
-    GameObject lastFiredBullet = null;
+    // Shooting cooldown
+    float fireRateLimit = 1;
+    float fireRateTimer;
 
     // Bullet speed, can be changed in inspector
     [SerializeField] float bulletSpeed;
@@ -47,8 +48,13 @@ public class PlayerShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        if (fireRateTimer < fireRateLimit)
+        {
+            fireRateTimer += Time.deltaTime;
+        }
         // Calls Shoot when spacebar is pressed if there are no bullets onscreen
-        if (Input.GetKeyDown(KeyCode.Space)/* && lastFiredBullet == null*/)
+        if (Input.GetKeyDown(KeyCode.Space) && fireRateTimer >= fireRateLimit)
         {
             Shoot();
         }
@@ -75,7 +81,8 @@ public class PlayerShooting : MonoBehaviour
     {
         if (bullet != null)
         {
-            lastFiredBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            fireRateTimer = 0;
+            GameObject lastFiredBullet = Instantiate(bullet, transform.position, Quaternion.identity);
             Projectile projectileScript = lastFiredBullet.GetComponent<Projectile>();
             projectileScript.speed = bulletSpeed;
         }

@@ -29,6 +29,9 @@ public class SettingManager : MonoBehaviour
         PlayerPrefs.SetFloat("MissileCooldown", 10);
         PlayerPrefs.SetInt("PlayerHealth", 10);
 
+        // Enemy Settings
+        PlayerPrefs.SetFloat("ShootChance", 0.25f);
+
         // Boss Settings
         PlayerPrefs.SetFloat("HoverWait", 7.5f);
         PlayerPrefs.SetFloat("Acceleration", 1f);
@@ -50,6 +53,9 @@ public class SettingManager : MonoBehaviour
         PlayerPrefs.SetString("Difficulty", "normal");
         PlayerPrefs.SetFloat("MissileCooldown", 20);
         PlayerPrefs.SetInt("PlayerHealth", 5);
+
+        // Enemy Settings
+        PlayerPrefs.SetFloat("ShootChance", 0.4f);
 
         // Boss Settings
         PlayerPrefs.SetFloat("HoverWait", 5f);
@@ -73,6 +79,9 @@ public class SettingManager : MonoBehaviour
         PlayerPrefs.SetFloat("MissileCooldown", 25);
         PlayerPrefs.SetInt("PlayerHealth", 3);
 
+        // Enemy Settings
+        PlayerPrefs.SetFloat("ShootChance", 0.65f);
+
         // Boss Settings
         PlayerPrefs.SetFloat("HoverWait", 4f);
         PlayerPrefs.SetFloat("Acceleration", 0.5f);
@@ -94,6 +103,9 @@ public class SettingManager : MonoBehaviour
         PlayerPrefs.SetString("Difficulty", "bullshit");
         PlayerPrefs.SetFloat("MissileCooldown", 35);
         PlayerPrefs.SetInt("PlayerHealth", 1);
+
+        // Enemy Settings
+        PlayerPrefs.SetFloat("ShootChance", 0.9f);
 
         // Boss Settings
         PlayerPrefs.SetFloat("HoverWait", 3f);

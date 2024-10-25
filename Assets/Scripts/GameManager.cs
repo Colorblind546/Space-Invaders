@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,7 +24,8 @@ public class GameManager : MonoBehaviour
     // Current GameManager instance
     private static GameManager _instance;
 
-    //cooldown for invaders shooting
+    // Chance that invaders shoot
+    float invaderShootChance;
 
  
 
@@ -60,6 +62,15 @@ public class GameManager : MonoBehaviour
             _instance = this;
 
         DontDestroyOnLoad(this);
+        if (PlayerPrefs.HasKey("ShootChance"))
+        {
+            invaderShootChance = PlayerPrefs.GetFloat("ShootChance");
+        }
+        else
+        {
+            invaderShootChance = 0.5f;
+        }
+        
     }
 
 
@@ -102,9 +113,12 @@ public class GameManager : MonoBehaviour
 
                 if (hitcheck.collider == null && !invader.cooldown && invader.invaderexist == true)
                 {
-
-                    Instantiate(invaderLaser, ob.transform.position, Quaternion.identity);
+                    if (invaderShootChance >= UnityEngine.Random.value)
+                    {
+                        Instantiate(invaderLaser, ob.transform.position, Quaternion.identity);
+                    }
                     invader.InvaderCooldown();
+
                 }
 
                 // Invaders �ker fr�n sida till sida
@@ -128,6 +142,11 @@ public class GameManager : MonoBehaviour
                 {
                     Advance();
                     break;
+                }
+
+                if (ob.transform.position.y <= -7.5f)
+                {
+                    SceneManager.LoadScene(2);
                 }
 
             }
