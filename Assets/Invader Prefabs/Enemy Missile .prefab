@@ -4930,6 +4930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 825
+  projectileType: 
   targetPosition: {x: 0, y: 0, z: 0}
 --- !u!50 &236322541412976351
 Rigidbody2D:
@@ -4973,7 +4974,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 896
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

@@ -18,6 +18,9 @@ public class MysteryShipController : MonoBehaviour
     float barrageCooldown;
     public float health;
 
+    // Main Camera
+    GameObject mainCamera;
+    screenShake_01 screenShake;
 
     // Projectiles
     [SerializeField] GameObject laser;
@@ -67,7 +70,8 @@ public class MysteryShipController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        mainCamera = Camera.main.gameObject;
+        screenShake = mainCamera.GetComponent<screenShake_01>();
 
         if (playerObj == null)
         {
@@ -169,20 +173,23 @@ public class MysteryShipController : MonoBehaviour
 
         while (true)
         {
-
-            if (PlayerPrefs.GetString("Difficulty") == "bullshit" || PlayerPrefs.GetString("Difficulty") == "hard")
+            if (state != InvaderStates.Rush)
             {
-                AimingShoot();
-                if (PlayerPrefs.GetString("Difficulty") == "bullshit")
+                if (PlayerPrefs.GetString("Difficulty") == "bullshit" || PlayerPrefs.GetString("Difficulty") == "hard")
                 {
                     AimingShoot();
+                    if (PlayerPrefs.GetString("Difficulty") == "bullshit")
+                    {
+                        AimingShoot();
+                    }
+                }
+                else if (PlayerPrefs.GetString("Difficulty") == "normal" || PlayerPrefs.GetString("Difficulty") == "easy")
+                {
+                    Shoot();
+
                 }
             }
-            else if (PlayerPrefs.GetString("Difficulty") == "normal" || PlayerPrefs.GetString("Difficulty") == "easy")
-            {
-                Shoot();
-
-            }
+            
 
 
             yield return new WaitForSeconds(attackSpeed);
@@ -198,7 +205,11 @@ public class MysteryShipController : MonoBehaviour
             if (state != InvaderStates.Rush)
             {
                 yield return new WaitForSeconds(barrageCooldown);
-                StartCoroutine(MissileBarrage());
+                if (state != InvaderStates.Rush)
+                {
+                    StartCoroutine(MissileBarrage());
+                }
+                
             }
             else
             {
@@ -214,7 +225,6 @@ public class MysteryShipController : MonoBehaviour
     IEnumerator RushPlayer()
     {
         int fury = 15;
-        StopCoroutine(constantFire);
         while (state == InvaderStates.Rush)
         {
 
@@ -254,7 +264,6 @@ public class MysteryShipController : MonoBehaviour
             }
 
         }
-        StartCoroutine(ConstantFire());
         currentStateCoroutine = null;
     }
 
@@ -421,6 +430,7 @@ public class MysteryShipController : MonoBehaviour
         health--;
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
         StartCoroutine(Shake(0.1f));
+        screenShake.StartCoroutine(screenShake.Shaking());
     }
 
     /// <summary>
@@ -434,7 +444,7 @@ public class MysteryShipController : MonoBehaviour
         float timeElapsed = 0;
         while (timeElapsed < duration)
         {
-            transform.position = basePosition + Random.insideUnitCircle * 1f;
+            transform.position = basePosition + Random.insideUnitCircle * 0.5f;
             timeElapsed += Time.deltaTime;
             yield return null;
         }

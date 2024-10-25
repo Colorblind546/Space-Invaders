@@ -101,7 +101,7 @@ public class SettingManager : MonoBehaviour
         PlayerPrefs.SetFloat("ShipSpeed", 5f);
         PlayerPrefs.SetFloat("RushDistance", 10f);
         PlayerPrefs.SetFloat("RushAttackSpeed", 0.65f);
-        PlayerPrefs.SetFloat("AttackSpeed", 2f);
+        PlayerPrefs.SetFloat("AttackSpeed", 1.25f);
         PlayerPrefs.SetInt("BarrageAmount", 7);
         PlayerPrefs.SetFloat("LaserSpeed", 10);
         PlayerPrefs.SetFloat("BossMissileBarrageCooldown", 12.5f);
