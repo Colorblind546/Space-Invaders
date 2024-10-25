@@ -16,7 +16,7 @@ public class MysteryShipController : MonoBehaviour
     int missileBarrageAmount;
     float laserSpeed;
     float barrageCooldown;
-    float health;
+    public float health;
 
 
     // Projectiles

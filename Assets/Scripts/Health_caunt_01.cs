@@ -11,7 +11,7 @@ public class Health_caunt_01 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.HasKey("PlayerHealth"))
+        if (PlayerPrefs.HasKey("PlayerHealth") && PlayerPrefs.GetInt("PlayerHealth") > 0)
         {
             lives = PlayerPrefs.GetInt("PlayerHealth");
         }
@@ -35,7 +35,7 @@ public class Health_caunt_01 : MonoBehaviour
             LivesText.text = "LIVES: " + lives;
         }
 
-        if (lives == 0)
+        if (lives <= 0)
         {
             Die();
         }
