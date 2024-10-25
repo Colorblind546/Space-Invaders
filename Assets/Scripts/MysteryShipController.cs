@@ -463,7 +463,15 @@ public class MysteryShipController : MonoBehaviour
         missileBarrageAmount = PlayerPrefs.GetInt("BarrageAmount");
         laserSpeed = PlayerPrefs.GetFloat("LaserSpeed");
         barrageCooldown = PlayerPrefs.GetFloat("BossMissileBarrageCooldown");
-        health = PlayerPrefs.GetInt("Health");
+        if (PlayerPrefs.HasKey("Health") && PlayerPrefs.GetInt("Health") > 0)
+        {
+            health = PlayerPrefs.GetInt("Health");
+        }
+        else
+        {
+            health = 30;
+        }
+        
 
 
     }
