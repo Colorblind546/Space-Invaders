@@ -7,6 +7,11 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class Health_caunt_01 : MonoBehaviour
 {
+
+    [SerializeField] GameObject bloodyExplosionEffect;
+    [SerializeField] GameObject explosionEffect;
+    [SerializeField] screenShake_01 screenShake;
+
     protected int lives = 3;
     public TMP_Text LivesText;
     // Start is called before the first frame update
@@ -47,19 +52,28 @@ public class Health_caunt_01 : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        screenShake.StartCoroutine(screenShake.Shaking());
+        Destroy(collision.gameObject);
         lives -= 1;
 
     }
 
     void Die()
     {
-
-        Destroy(gameObject);
-        
+        Instantiate(bloodyExplosionEffect, transform.position, Quaternion.identity);
+        Instantiate(bloodyExplosionEffect, transform.position, Quaternion.identity);
+        gameObject.SetActive(false);
+        Invoke(nameof(WaitTillLoad), 2);
     }
 
-    private void OnDestroy()
+    
+    
+
+    /// <summary>
+    /// Loads gameOver scene
+    /// </summary>
+    void WaitTillLoad()
     {
         SceneManager.LoadScene(2);
     }

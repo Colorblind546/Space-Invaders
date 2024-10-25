@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
                     break;
                 }
 
-                if (ob.transform.position.y <= -7.5f)
+                if (ob.transform.position.y <= -7.5f && invader.invaderexist)
                 {
                     SceneManager.LoadScene(2);
                 }

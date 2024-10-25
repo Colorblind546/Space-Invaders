@@ -1972,6 +1972,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d190d6a16f98b43bb1897f79aa7f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloodyExplosionEffect: {fileID: 7519137061595987311, guid: ebbae6ee66f32dc47a47b545bd31da27, type: 3}
+  explosionEffect: {fileID: 7519137061595987311, guid: 0834b0ec1a1eac84a827777dfbcafcc0, type: 3}
+  screenShake: {fileID: 519420033}
   LivesText: {fileID: 385682574}
 --- !u!1 &2039186660
 GameObject:

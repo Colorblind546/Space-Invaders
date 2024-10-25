@@ -177,6 +177,7 @@ public class MysteryShipController : MonoBehaviour
 
         while (true)
         {
+           
             if (state != InvaderStates.Rush)
             {
                 if (PlayerPrefs.GetString("Difficulty") == "bullshit" || PlayerPrefs.GetString("Difficulty") == "hard")
@@ -353,9 +354,13 @@ public class MysteryShipController : MonoBehaviour
     /// </summary>
     void Shoot()
     {
-        GameObject laserObj = Instantiate(laser, transform.position, Quaternion.identity);
-        Projectile laserProjectile = laserObj.GetComponent<Projectile>();
-        laserProjectile.speed = laserSpeed;
+        if (playerObj != null)
+        {
+            GameObject laserObj = Instantiate(laser, transform.position, Quaternion.identity);
+            Projectile laserProjectile = laserObj.GetComponent<Projectile>();
+            laserProjectile.speed = laserSpeed;
+
+        }
     }
 
     /// <summary>
@@ -363,17 +368,17 @@ public class MysteryShipController : MonoBehaviour
     /// </summary>
     void AimingShoot()
     {
-        GameObject laserObj = Instantiate(laser, transform.position, Quaternion.identity);
-        Projectile laserProjectile = laserObj.GetComponent<Projectile>();
-        laserProjectile.speed = laserSpeed;
-        laserProjectile.projectileType = "aimed";
         if (playerObj != null)
         {
-            laserProjectile.MoveAimedProjectile(Random.insideUnitCircle * 3f + (Vector2)playerObj.transform.position);
+            GameObject laserObj = Instantiate(laser, transform.position, Quaternion.identity);
+            Projectile laserProjectile = laserObj.GetComponent<Projectile>();
+            laserProjectile.speed = laserSpeed;
+            laserProjectile.projectileType = "aimed";
+            if (playerObj != null)
+            {
+                laserProjectile.MoveAimedProjectile(Random.insideUnitCircle * 3f + (Vector2)playerObj.transform.position);
+            }
         }
-        
-        
-
     }
 
     /// <summary>
@@ -440,6 +445,7 @@ public class MysteryShipController : MonoBehaviour
 
     void ShipDeath()
     {
+        Instantiate(bloodyExplosionEffect, transform.position, Quaternion.identity);
         Instantiate(bloodyExplosionEffect, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
     }
