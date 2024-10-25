@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MysteryShipController : MonoBehaviour
 {
@@ -447,7 +448,13 @@ public class MysteryShipController : MonoBehaviour
     {
         Instantiate(bloodyExplosionEffect, transform.position, Quaternion.identity);
         Instantiate(bloodyExplosionEffect, transform.position, Quaternion.identity);
+        Invoke(nameof(LoadWinScreen), 3);
         gameObject.SetActive(false);
+    }
+
+    void LoadWinScreen()
+    {
+        SceneManager.LoadScene(3);
     }
 
     void FindPlayer()
