@@ -180,6 +180,7 @@ MonoBehaviour:
   cooldown: 0
   scoreCounter: {fileID: 0}
   score: 50
+  invaderexist: 0
 --- !u!82 &4696554663598739677
 AudioSource:
   m_ObjectHideFlags: 0

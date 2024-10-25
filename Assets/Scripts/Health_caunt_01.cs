@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class Health_caunt_01 : MonoBehaviour
@@ -51,8 +52,16 @@ public class Health_caunt_01 : MonoBehaviour
 
     }
 
-    protected void Die()
+    void Die()
     {
+
         Destroy(gameObject);
+        
     }
+
+    private void OnDestroy()
+    {
+        SceneManager.LoadScene(2);
+    }
+
 }

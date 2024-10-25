@@ -99,9 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8704e26fa6f53094b8ffcf5525cc2335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserAimed: {fileID: 1221257828946106467, guid: eb400af0058350a42bac2c272286a9a6, type: 3}
+  health: 0
   laser: {fileID: 1221257828946106467, guid: d15d7557d3fab60429d7b57da618d6d6, type: 3}
   missile: {fileID: 1492434499997032799, guid: 352df382389b1e74c89375ca28dfa1c5, type: 3}
+  state: 0
   bloodyExplosionEffect: {fileID: 7519137061595987311, guid: ebbae6ee66f32dc47a47b545bd31da27, type: 3}
   explosionEffect: {fileID: 7519137061595987311, guid: 0834b0ec1a1eac84a827777dfbcafcc0, type: 3}
   targetPos: {x: 0, y: 0, z: 0}

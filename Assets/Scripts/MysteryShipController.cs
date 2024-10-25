@@ -349,7 +349,7 @@ public class MysteryShipController : MonoBehaviour
         laserProjectile.projectileType = "aimed";
         if (playerObj != null)
         {
-            laserProjectile.MoveAimedProjectile(Random.insideUnitCircle * 2f + (Vector2)playerObj.transform.position);
+            laserProjectile.MoveAimedProjectile(Random.insideUnitCircle * 3f + (Vector2)playerObj.transform.position);
         }
         
         
